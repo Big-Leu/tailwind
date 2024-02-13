@@ -33,7 +33,7 @@ const Cam: React.FC = () => {
           <div>
             <button className="relative left-[1000px] w-[114px] top-[-10px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded"onClick={() => setCaptureEnable(false)}>End</button>
           </div>
-          <div className="border-4 border-indigo-500">
+          <div className="rounded-md border-double border-4 w-[540px] border-emerald-400">
             <Webcam
               audio={false}
               width={540}
@@ -52,7 +52,7 @@ const Cam: React.FC = () => {
             <button onClick={() => setUrl(null)}>Delete</button>
           </div>
           <div>
-            <Image src={url} alt="Screenshot" />
+            <Image src={url} alt="Screenshot" width="540" height="360"/>
           </div>
         </>
       )}
