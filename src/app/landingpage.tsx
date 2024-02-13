@@ -6,7 +6,10 @@ import bike2 from "./assets/bike2.svg"
 import ather from "./assets/ather.svg"
 import slap from "./assets/slap.svg"
 import newev from "./assets/newev.svg"
-const Landing: React.FC = () => {
+import { NextPage } from "next";
+import Link from 'next/link';
+
+const Landing: NextPage = () => {
     return (
         <div className="static w-lvh h-lvh  bg-transparent flex flex-row justify-start items-start overflow-hidden">
             <div className=" relative drop-shadow-lg w-[975px] h-full z-10 bg-stone-950 flex flex-col space-y-10 overflow-hidden">
@@ -23,9 +26,11 @@ const Landing: React.FC = () => {
                     <p className="relative top-[-55px] left-[163px] w-[614px] font-normal font-dangrek text-[20px]  text-stone-600"><span className="text-white">Shift your journey, not gears.</span> Navigate the city with ease on our rental vehicles, freeing your mind as the bike intuitively adapts to power the speed you desire. Embrace the fastest way to move through the urban landscape and experience the freedom of a seamless ride. </p>
                 </div>
                 <div className="relative top-[-60px] z-30 left-[163px]">
-                    <button className="w-[169px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-xl font-dangrek py-3 px-4 rounded">
-                        Book Ride
-                    </button>
+                    <Link href="/login" >
+                        <button className="w-[169px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-xl font-dangrek py-3 px-4 rounded">
+                            Book Ride
+                        </button>
+                    </Link>
                 </div>
                 <div>
                     <Image className="relative w-56px top-[-200px] left-[-30px] z-20 object-cover " src={bike2} alt="" />

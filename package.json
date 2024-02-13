@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.20",
+    "@types/react-router-dom": "^5.3.3",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-router": "^6.22.0",
+    "react-router-dom": "^6.22.0",
     "react-webcam": "^7.2.0"
   },
   "devDependencies": {

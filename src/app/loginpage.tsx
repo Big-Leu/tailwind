@@ -4,9 +4,9 @@ import Image from "next/image";
 import facefb from './assets/facefb.svg'
 import goog from './assets/goog.svg'
 import bike from './assets/bike.png'
+import { NextPage } from "next";
 
-
-const Loginpage: React.FC = () => {
+const Loginpage: NextPage = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
