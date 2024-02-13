@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 
 const CheckboxExample: React.FC = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <div>
