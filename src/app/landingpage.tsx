@@ -16,8 +16,8 @@ const Landing: React.FC = () => {
                 </div>
                 <div >
                     <h1 className=" relative font-dangrek top-[70px] left-[163px] text-[70px]">Take the </h1>
-                    <h1 className="relative font-dangrek top-[70px] left-[163px] text-[70px]">Streets.</h1>
-                    <h1 className="relative font-dangrek text-emerald-400 top-[-13px] left-[406px] text-[50px]">Allyna 1.0</h1>
+                    <h1 className="relative font-dangrek top-[50px] left-[163px] text-[70px]">Streets.</h1>
+                    <h1 className="relative font-dangrek text-emerald-400 top-[-33px] left-[406px] text-[50px]">Allyna 1.0</h1>
                 </div>
                 <div>
                     <p className="relative top-[-55px] left-[163px] w-[614px] font-normal font-dangrek text-[20px]  text-stone-600"><span className="text-white">Shift your journey, not gears.</span> Navigate the city with ease on our rental vehicles, freeing your mind as the bike intuitively adapts to power the speed you desire. Embrace the fastest way to move through the urban landscape and experience the freedom of a seamless ride. </p>
