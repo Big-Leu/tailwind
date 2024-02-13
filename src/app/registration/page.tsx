@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Cam from "./cam";
-import eev from "./assets/ev bike.svg"
-import hel from "./assets/hell.svg"
+import Cam from "../cam";
+import eev from "../assets/ev bike.svg"
+import hel from "../assets/hell.svg"
 import Image from "next/image";
 import { NextPage } from "next";
 
