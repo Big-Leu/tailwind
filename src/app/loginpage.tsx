@@ -1,20 +1,18 @@
+"use client"
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import faceb from './assets/fb.png'
 import facefb from './assets/facefb.svg'
 import goog from './assets/goog.svg'
 import bike from './assets/bike.png'
-import google from './assets/go.png'
-// import React, { useState } from 'react';
 
-// const CheckboxExample: React.FC = () => {
-//   const [isChecked, setIsChecked] = useState(false);
 
-//   const handleCheckboxChange = () => {
-//     setIsChecked(!isChecked);
-//   };
-// }
+const Loginpage: React.FC = () => {
+  const [isChecked, setIsChecked] = useState(false);
 
-export default function loginpage() {
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className="w-[1920px] h-[1080px] bg-stone-900 flex flex-row justify-start items-start">
 
@@ -54,15 +52,16 @@ export default function loginpage() {
         </div>
         <div className="flex justify-center">
           <label className="font-dangrek text-xl">
-            <input type="checkbox" className="accent-emerald-400" checked /> Stay signed in
+            <input type="checkbox" className="accent-emerald-400" checked={isChecked}
+              onChange={handleCheckboxChange} /> Stay signed in
           </label>
         </div>
         <div className="flex justify-center gap-3">
           <button className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
-          Login
+            Login
           </button>
           <button className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
-           Sign up
+            Sign up
           </button>
         </div>
         <div className="flex justify-center">
@@ -89,5 +88,7 @@ export default function loginpage() {
         <div className="w-[93px] h-6 left-[1750px] top-[920px] absolute text-stone-400 text-[26px] font-normal font-dangrek">v1.0.1</div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Loginpage;
