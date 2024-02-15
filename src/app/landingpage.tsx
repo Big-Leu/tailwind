@@ -12,9 +12,11 @@ import Link from 'next/link';
 const Landing: NextPage = () => {
     return (
         <div className="static w-lvh h-lvh  bg-transparent flex flex-row justify-start items-start overflow-hidden">
-            <div className=" relative drop-shadow-lg w-[975px] h-full z-10 bg-stone-950 flex flex-col space-y-10 overflow-hidden">
-                <div >
-                    <Image className="relative w-56px top-[50px] left-[943px] z-20 object-cover" src={equal} alt="" />
+            <div className=" relative drop-shadow-lg  h-full z-10 bg-stone-950 flex flex-col overflow-hidden">
+                <div className="flex justify-end ">
+                    <Image className="relative w-[56px] pt-[50px]  z-20 object-cover" src={equal} alt="" />
+                </div>
+                <div>
                     <Image className="relative w-[60px] h-[64px] top-[66px] left-[70px] z-20 object-cover " src={eev} alt="" />
                 </div>
                 <div >
@@ -39,7 +41,9 @@ const Landing: NextPage = () => {
                 </div>
             </div>
             <div className=" relative w-[960px] h-full z-0 bg-stone-900 overflow-visible">
-                <Image className=" relative w-56px top-[50px] left-[-30px] z-20 object-cover" src={equal} alt="" />
+                <div className=" relative flex justify-start pt-[50px] ">
+                    <Image className=" relative w-40px " src={equal} alt="" />
+                </div>
                 <div className="flex flex-col">
                     <div >
                         <ul className="flex flex-row justify-end font-normal font-dangrek text-emerald-400 gap-20 text-[30px] pt-8 pr-20  ">
