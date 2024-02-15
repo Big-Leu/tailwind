@@ -5,7 +5,7 @@ import Landing from "./landingpage";
 export default function Home() {
   return (
     <div>
-        <Landing/>
+        <Loginpage/>
     </div>
   )
 }
