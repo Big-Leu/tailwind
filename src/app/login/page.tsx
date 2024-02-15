@@ -32,7 +32,7 @@ const Loginpage: NextPage = () => {
           </svg>
         </div>
         <div></div>
-        <form>
+        <form className="flex flex-col  space-y-10">
           <div className="text-center pt-1">
             <label className="w-[105px] h-[63.16px] text-white text-4xl font-normal font-dangrek">
               Sign Up
