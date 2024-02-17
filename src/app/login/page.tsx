@@ -41,19 +41,33 @@ const Loginpage: NextPage = () => {
           <div className="flex flex-col gap-10 px-10">
             <div className="relative w-full min-w-[200px] h-14">
               <input
-                className="peer w-full h-full bg-transparent 0 font-dangrek  outline outline-0 focus:outline-0 disabled:bg-emerald-400 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
+                type="email"
+                name="floating_email"
+                id="floating_email"
+                className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
+                required
               />
-              <label className="flex w-full h-full select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-neutral-500 peer-focus:text-emerald-400 before:border-emerald-400 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400">
+              <label
+                form="floating_email"
+                className="flex w-full font-dangrek h-full select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-emerald-400 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
+              >
                 USERNAME
               </label>
             </div>
             <div className="relative w-full min-w-[200px] h-14">
               <input
-                className="peer w-full h-full bg-transparent  font-dangrek  outline outline-0 focus:outline-0 disabled:bg-emerald-400 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
+                type="password"
+                name="repeat_password"
+                id="floating_repeat_password"
+                className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
+                required
               />
-              <label className="flex w-full h-full select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-neutral-500 peer-focus:text-emerald-400 before:border-blue-gray-200 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400">
+              <label
+                form="floating_repeat_password"
+                className="flex w-full h-full font-dangrek select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-blue-gray-200 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
+              >
                 PASSWORD
               </label>
             </div>
@@ -62,7 +76,7 @@ const Loginpage: NextPage = () => {
             <Image className=" object-cover " src={facefb} alt="" />
             <Image className=" object-cover " src={goog} alt="" />
           </div>
-          <div className="flex justify-center">
+          <div className="flex  flex-row justify-center">
             <label className="font-dangrek text-xl">
               <input
                 type="checkbox"
@@ -95,8 +109,8 @@ const Loginpage: NextPage = () => {
           </label>
         </div>
       </div>
-      <div className="w-full h-full bg-stone-950 text-center">
-        <div className=" text-centre pt-20">
+      <div className=" static flex flex-col w-full h-full bg-stone-950 text-center">
+        <div className=" relative text-centre pt-10">
           <span className="text-emerald-400 text-5xl font-dangrek pt-6">
             Rev Up Your Day:
           </span>
@@ -111,14 +125,14 @@ const Loginpage: NextPage = () => {
             <br />
           </span>
         </div>
-        <div className="flex justify-center items-center h-screen pb-20">
+        <div className=" relative grow flex justify-center items-center h-screen ">
           <Image
             className=" object-cover w-[900px] h-[690px]"
             src={bike}
             alt=""
           />
         </div>
-        <div className="w-[93px] h-6 left-[1750px] top-[920px] absolute text-stone-400 text-[26px] font-normal font-dangrek">
+        <div className="relative grid justify-items-end px-6 text-stone-40 text-4xl font-normal font-dangrek">
           v1.0.1
         </div>
       </div>
