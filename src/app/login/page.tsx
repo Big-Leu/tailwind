@@ -15,8 +15,8 @@ const Loginpage: NextPage = () => {
   };
 
   return (
-    <div className="static w-lvh h-lvh bg-transparent flex flex-row justify-start items-start overflow-hidden">
-      <div className=" relative w-[700px] h-full bg-stone-900 flex flex-col space-y-10 ">
+    <div className=" w-lvh h-lvh bg-transparent flex flex-row justify-start overflow-hidden">
+      <div className="static grow w-[700px] h-full bg-stone-900 flex flex-col space-y-10 ">
         <div className=" bg-stone-60 w-450 h-45 px-20 pt-20">
           <svg
             width="41"
@@ -32,9 +32,9 @@ const Loginpage: NextPage = () => {
           </svg>
         </div>
         <div></div>
-        <form className="flex flex-col  space-y-10">
+        <form className="flex flex-col space-y-10">
           <div className="text-center pt-1">
-            <label className="w-[105px] h-[63.16px] text-white text-4xl font-normal font-dangrek">
+            <label className="text-white text-4xl font-normal font-dangrek">
               Sign Up
             </label>
           </div>
@@ -98,15 +98,17 @@ const Loginpage: NextPage = () => {
             </Link>
           </div>
         </form>
-        <div className="flex justify-center">
-          <label className="top-[840px] absolute text-white text-xl font-normal font-dangrek">
-            CAN’T SIGN IN?
-          </label>
-        </div>
-        <div className="flex justify-center">
-          <label className="top-[900px] absolute text-stone-400 text-xl font-dangrek">
-            By logging in, you agree to our terms and condition
-          </label>
+        <div className="flex flex-col items-center pt-32 space-y-4">
+          <div className="">
+            <label className=" text-white text-2xl font-normal font-dangrek">
+              CAN’T SIGN IN?
+            </label>
+          </div>
+          <div className=" text-center pt-5">
+            <label className=" text-stone-400 text-xl font-dangrek">
+              By logging in, you agree to our terms and condition
+            </label>
+          </div>
         </div>
       </div>
       <div className=" static flex flex-col w-full h-full bg-stone-950 text-center">
