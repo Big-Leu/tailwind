@@ -15,8 +15,8 @@ const Loginpage: NextPage = () => {
   };
 
   return (
-    <div className=" w-lvh h-lvh bg-transparent flex flex-row justify-start overflow-hidden">
-      <div className="static grow w-[700px] h-full bg-stone-900 flex flex-col space-y-10 ">
+    <div className=" xl:w-lvh xl:h-lvh md:flex-col md:justify-end md:h-full sm:flex-col bg-transparent flex xl:flex-row justify-start">
+      <div className="static grow min-h-dvh min-w-dvh xl:w-[700px] bg-stone-900 flex flex-col space-y-10 ">
         <div className=" bg-stone-60 w-450 h-45 px-20 pt-20">
           <svg
             width="41"
