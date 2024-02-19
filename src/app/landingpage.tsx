@@ -54,13 +54,17 @@ const Landing: NextPage = () => {
             </button>
           </Link>
         </div>
-        <div className="static flex flex-row">
-          <div className="relative">
-            <Image className="relative z-20 object-cover " src={bike2} alt="" />
-            <Image className=" z-10 object-cover " src={slap} alt="" />
+        <div className="flex flex-row">
+          <div className="flex-none">
+            <Image className="z-20 object-cover " src={bike2} alt="" />
+            <Image className="z-10 object-cover " src={slap} alt="" />
           </div>
-          <div className=" relative place-items-end">
-            <Image className=" mt-52 z-20 object-cover " src={ather} alt="" />
+          <div>
+            <Image
+              className=" relative max-w-[264px] z-20 object-cover "
+              src={ather}
+              alt=""
+            />
           </div>
         </div>
       </div>
