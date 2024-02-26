@@ -10,6 +10,7 @@ import station from "../assets/location.svg"
 import maps from "../assets/maaps.svg"
 import sub from "../assets/subp.svg"
 import CARD from "../component/card";
+import profile from "../assets/profile.svg"
 const Dashboard: NextPage = () => {
 
   return (
@@ -43,13 +44,25 @@ const Dashboard: NextPage = () => {
           <div className=" font-dangrek text-2xl text-center">
                 <h1>AVAILABLE VEHICLES</h1>
            </div>
-           <div className=" px-5 space-y-3 overflow-y-auto">
+           <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
                <CARD />
                <CARD />
            </div>
        </div>
-       <div className="flex flex-col w-full h-full bg-stone-950 text-center">
-           
+       <div className=" relative flex flex-col w-full h-full bg-stone-950 text-center">
+           <div className="flex flex-row">
+               <label className=" font-dangrek text-emerald-400 text-xl absolute left-10 top-8">DASHBOARD</label>
+               <div className=" absolute right-4 top-5 space-x-4 flex flex-row">
+                 <div className=" flex flex-col">
+                    <label className=" font-dangrek text-2xl text-emerald-400">Account</label>
+                    <label className=" font-dangrek text-sm">abc@gmail.com</label>
+                 </div>
+                 <Image className=" object-cover " src={profile} alt="" />
+               </div>
+           </div>
+           <div>
+
+           </div>
        </div>
     </div>
   );
