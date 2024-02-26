@@ -9,12 +9,12 @@ import dash from "../assets/svd.svg"
 import station from "../assets/location.svg"
 import maps from "../assets/maaps.svg"
 import sub from "../assets/subp.svg"
-
+import CARD from "../component/card";
 const Dashboard: NextPage = () => {
 
   return (
     <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
-       <div className="min-h-dvh min-w-dvh xl:w-[400px] bg-stone-900 flex flex-col space-y-10 ">
+       <div className="w-[400px] h-full bg-stone-900 flex flex-col space-y-10 ">
           <div className="pt-10 ml-10">
           <Image className=" object-cover " src={evlogo} alt="" />
           </div>
@@ -42,6 +42,10 @@ const Dashboard: NextPage = () => {
           </div>
           <div className=" font-dangrek text-2xl text-center">
                 <h1>AVAILABLE VEHICLES</h1>
+           </div>
+           <div className=" px-5 space-y-3 overflow-y-auto">
+               <CARD />
+               <CARD />
            </div>
        </div>
        <div className="flex flex-col w-full h-full bg-stone-950 text-center">

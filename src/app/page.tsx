@@ -7,7 +7,7 @@ import CARD from "./component/card";
 export default function Home() {
   return (
     <div>
-      <CARD />
+      <Dashboard />
     </div>
   );
 }
