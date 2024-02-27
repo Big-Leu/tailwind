@@ -63,10 +63,12 @@ const Dashboard: NextPage = () => {
                  <Image className=" object-cover " src={profile} alt="" />
                </div>
            </div>
-           <div className=" relative top-28 flex flex-row space-x-6 px-10">
-              <PP/>
-              {/* <PP/>
-              <PP/> */}
+           <div className="ml-14 pt-20 ">
+            <div className="grid grid-cols-3 place-items-stretch">
+                <PP/>
+                <PP/>
+                <PP/>
+            </div>
            </div>
        </div>
     </div>
