@@ -11,11 +11,14 @@ import maps from "../assets/maaps.svg"
 import sub from "../assets/subp.svg"
 import CARD from "../component/card";
 import profile from "../assets/profile.svg"
+import Slider from 'react-slick'
+import PLAN from "../component/plan";
+import PP from "../component/plans";
 const Dashboard: NextPage = () => {
 
   return (
     <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
-       <div className="w-[400px] h-full bg-stone-900 flex flex-col space-y-10 ">
+       <div className="min-w-[400px] h-full bg-stone-900 flex flex-col space-y-10 ">
           <div className="pt-10 ml-10">
           <Image className=" object-cover " src={evlogo} alt="" />
           </div>
@@ -60,8 +63,10 @@ const Dashboard: NextPage = () => {
                  <Image className=" object-cover " src={profile} alt="" />
                </div>
            </div>
-           <div>
-
+           <div className=" relative top-28 flex flex-row space-x-6 px-10">
+              <PP/>
+              {/* <PP/>
+              <PP/> */}
            </div>
        </div>
     </div>
