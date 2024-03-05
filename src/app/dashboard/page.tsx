@@ -87,9 +87,20 @@ const Dashboard: NextPage = () => {
           </div>
         </div>
         <div className="pl-10  h-full flex flex-row gap-12 pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
-          {Object.values(data).map((element, index) => (
-            <PP hr={data.rows[index].hour} price={data.rows[index].price} />
-          ))}
+          {data.rows ? (
+            data.rows.map((row, index) => (
+              <PP
+                hr={row.hour}
+                price={row.price}
+                label={row.label}
+                icon={row.icon}
+                color={row.color}
+                key={index}
+              />
+            ))
+          ) : (
+            <p>Data is not available</p>
+          )}
         </div>
       </div>
     </div>
