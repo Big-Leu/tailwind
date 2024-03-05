@@ -14,7 +14,27 @@ import profile from "../assets/profile.svg";
 import Slider from "react-slick";
 import PLAN from "../component/plan";
 import PP from "../component/plans";
+import axios from "axios";
+
 const Dashboard: NextPage = () => {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/info");
+        console.log(response);
+        setData(response.data);
+        console.log(response.data[0].count);
+        console.log(response.data.rows[0].hour);
+        console.log(response.data.rows[1]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
       <div className="min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 ">
@@ -67,15 +87,9 @@ const Dashboard: NextPage = () => {
           </div>
         </div>
         <div className="pl-10  h-full flex flex-row gap-12 pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
-          <div>
-            <PP />
-          </div>
-          <div>
-            <PP />
-          </div>
-          <div>
-            <PP />
-          </div>
+          {Object.values(data).map((element, index) => (
+            <PP hr={data.rows[index].hour} price={data.rows[index].price} />
+          ))}
         </div>
       </div>
     </div>
