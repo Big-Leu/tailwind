@@ -6,10 +6,11 @@ import Dashboard from "./dashboard/page";
 import CARD from "./component/card";
 import PLAN from "./component/plan";
 import PP from "./component/plans";
+import FORM from "./from/page";
 export default function Home() {
   return (
     <div>
-      <Dashboard/>
+      <FORM/>
     </div>
   );
 }

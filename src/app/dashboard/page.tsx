@@ -17,6 +17,11 @@ import PP from "../component/plans";
 import axios from "axios";
 
 const Dashboard: NextPage = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -86,7 +91,7 @@ const Dashboard: NextPage = () => {
             <Image className=" object-cover " src={profile} alt="" />
           </div>
         </div>
-        <div className="pl-10  h-full flex flex-row gap-12 pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
+        <div className="h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
           {data.rows ? (
             data.rows.map((row, index) => (
               <PP
