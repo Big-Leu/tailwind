@@ -10,7 +10,13 @@ import FORM from "./from/page";
 export default function Home() {
   return (
     <div>
-      <FORM/>
+      <FORM
+        hr={0}
+        price="dsdssdd"
+        label="row.label"
+        icon="row.icon"
+        color="bg-stone-700"
+      />
     </div>
   );
 }
