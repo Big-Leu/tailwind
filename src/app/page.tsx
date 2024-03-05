@@ -9,7 +9,7 @@ import PP from "./component/plans";
 export default function Home() {
   return (
     <div>
-      <Dashboard />
+      <Dashboard/>
     </div>
   );
 }
