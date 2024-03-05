@@ -31,7 +31,7 @@ app.get("/info", (req, res) => {
     }
 
     // Perform a query to fetch data
-    connection.query("SELECT hour,price FROM test", (queryErr, rows) => {
+    connection.query("SELECT * FROM test", (queryErr, rows) => {
       // Release the connection back to the pool
 
       if (queryErr) {
@@ -41,19 +41,22 @@ app.get("/info", (req, res) => {
       }
       // console.log(rows);
 
-      connection.query("SELECT count(*) as count FROM test", (queryErr, rows1) => {
-        // Release the connection back to the pool
-        connection.release();
+      connection.query(
+        "SELECT count(*) as count FROM test",
+        (queryErr, rows1) => {
+          // Release the connection back to the pool
+          connection.release();
 
-        if (queryErr) {
-          console.error("Error querying database:", queryErr);
-          res.status(500).send("Internal Server Error");
-          return;
+          if (queryErr) {
+            console.error("Error querying database:", queryErr);
+            res.status(500).send("Internal Server Error");
+            return;
+          }
+          // console.log(rows1);
+          console.log({ rows: rows, ...rows1 });
+          res.json({ rows: rows, ...rows1 });
         }
-        // console.log(rows1);
-        console.log({ rows: rows, ...rows1 });
-        res.json({ rows: rows, ...rows1 });
-      });
+      );
       // Send the fetched data as a response
     });
   });
