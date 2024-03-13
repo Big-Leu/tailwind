@@ -62,6 +62,34 @@ app.get("/info", (req, res) => {
   });
 });
 
+app.get("/date", async (req, res) => {
+  const { date } = req.query;
+  console.log(date);
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error getting connection from pool:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    connection.query(
+      "SELECT * FROM AvailableSlots WHERE Date = '" + date + "'",
+      (queryErr, result) => {
+        // Release the connection back to the pool
+        connection.release();
+
+        if (queryErr) {
+          console.error("Error querying database:", queryErr);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+        // console.log(rows1);
+        console.log(result);
+        res.json(result);
+      }
+    );
+  });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
