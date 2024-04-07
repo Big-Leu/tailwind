@@ -8,6 +8,7 @@ import Link from "next/link";
 import aa from "../assets/aadhar.svg";
 import bb from "../assets/bb.svg";
 import axios from "axios";
+import Cam from "../cam";
 
 interface WelcomeProps {
   hr: number;
@@ -67,8 +68,8 @@ const FORM: NextPage<WelcomeProps> = (props) => {
 
   return (
     <div className="static z-10 w-screen h-screen flex justify-center overflow-hidden">
-      <div className="absolute z-20 bg-stone-900 rounded-xl max-h-[85%] min-w-[40%]  my-[3rem] mx-5 py-10  overflow-y-auto">
-        <form className="max-w-sm mx-auto space-y-5">
+      <div className="absolute z-20 bg-stone-900 rounded-xl max-h-[85%] min-w-[50%]  my-[3rem] mx-5 py-10  overflow-y-auto">
+        <form className="min-w-sm mx-auto space-y-5 px-10">
           <div id="userName">
             <label
               htmlFor="website-admin"
@@ -392,6 +393,9 @@ const FORM: NextPage<WelcomeProps> = (props) => {
               >
                 12 PM
               </div>
+            </div>
+            <div>
+              <Cam/>
             </div>
           </div>
         </form>
