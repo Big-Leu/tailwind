@@ -397,6 +397,11 @@ const FORM: NextPage<WelcomeProps> = (props) => {
             <div>
               <Cam/>
             </div>
+            <div>
+              <button className="mt-[3rem] relative  w-full h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded">
+                      Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
