@@ -40,6 +40,7 @@ const Dashboard: NextPage = () => {
 
     fetchData();
   }, []);
+  
   return (
     <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
       <div className="min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 ">
@@ -91,7 +92,7 @@ const Dashboard: NextPage = () => {
             <Image className=" object-cover " src={profile} alt="" />
           </div>
         </div>
-        <div className="h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
+        <div className="invisible h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
           {data.rows ? (
             data.rows.map((row, index) => (
               <PP

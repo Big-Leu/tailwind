@@ -30,9 +30,6 @@ const Cam: React.FC = () => {
       )}
       {isCaptureEnable && (
         <>
-          <div>
-            <button className="absolute mt-[32.5rem] ml-[1rem] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-3xl font-dangrek py-[0.1rem] px-[1rem] rounded" onClick={() => setCaptureEnable(false)}>End</button>
-          </div>
           <div className="rounded-md mt-10 mb-10 border-double border-[1vw] border-emerald-400">
             <Webcam
               audio={false}
@@ -43,6 +40,9 @@ const Cam: React.FC = () => {
               videoConstraints={videoConstraints}
             />
           </div>
+          <div>
+            <button className="absolute mt-[-1rem] ml-[1rem] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-3xl font-dangrek py-[0.1rem] px-[1rem] rounded" onClick={() => setCaptureEnable(false)}>End</button>
+          </div>
           <button className="absolute mt-[-1rem] ml-[8rem] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-3xl font-dangrek py-[0.1rem] px-[1rem] rounded" onClick={capture}>Capture</button>
         </>
       )}
@@ -52,7 +52,7 @@ const Cam: React.FC = () => {
             <button onClick={() => setUrl(null)}>Delete</button>
           </div>
           <div>
-            <Image src={url} alt="Screenshot" width="100%" height="auto"/>
+            <Image src={url} alt="Screenshot" width="1920" height="1080"/>
           </div>
         </>
       )}
