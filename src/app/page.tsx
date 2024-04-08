@@ -8,6 +8,7 @@ import PLAN from "./component/plan";
 import PP from "./component/plans";
 import FORM from "./from/page";
 import TripCard from "./component/tripcard";
+import CAMP from "./camp/page";
 export default function Home() {        
   return (
     // <div>
@@ -19,6 +20,6 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
-    <Dashboard/>
+    <CAMP/>
   );
 }
