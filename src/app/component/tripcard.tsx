@@ -5,7 +5,16 @@ import { NextPage } from "next";
 import Link from "next/link";
 import hel from "../assets/hell.svg"
 import bb1 from "../assets/bb1.png"
-const TripCard: NextPage = () => {
+interface WelcomeProps {
+  user_email:string;
+  name:string;
+}
+const TripCard: NextPage<WelcomeProps> = (props) => {
+
+  const redirectToSite = () => {
+    const url = `/camp?user_email=${encodeURIComponent(props.user_email)}&name=${encodeURIComponent(props.name)}`;
+    window.location.href = url;
+  };
 
   return (
 
@@ -16,18 +25,18 @@ const TripCard: NextPage = () => {
           <div className="flex flex-rows space-x-10 mt-5 justify-around ">
             <div className="flex flex-col">
                 <label className="text-emerald-500 font-dangrek text-4xl">10:00AM </label>
-                <label className="font-dangrek ml-[2.5rem] text-xl">FROM </label>
+                <label className="font-dangrek text-xl">FROM </label>
             </div>
             <div className="flex flex-col">
                 <label className="text-emerald-500 font-dangrek text-4xl">2:00PM </label>
-                <label className="font-dangrek ml-[3rem] text-xl">TO </label>
+                <label className="font-dangrek ml-[1rem] text-xl">TO </label>
             </div>
           </div>
-          <div className=" flex flex-row mt-[2rem] ml-[1rem] px-4 space-x-6">
+          <div className=" flex flex-row mt-[2rem] px-4 space-x-6">
             <div>
                 <div className="flex flex-col">
-                    <label className="ml-[1rem] font-dangrek text-xl">NAME OF USER : </label>
-                    <label className="ml-[1rem] text-emerald-500 font-dangrek  text-2xl">Ganesh Gandu </label>
+                    <label className="ml-[1rem] font-dangrek text-xl">Email OF USER : </label>
+                    <label className="ml-[1rem] text-emerald-500 font-dangrek  text-2xl">{props.user_email}</label>
                 </div>
                 <div className="flex flex-col mt-[1rem]">
                     <label className="font-dangrek text-xl">VEHICLE ID : </label>
@@ -42,7 +51,9 @@ const TripCard: NextPage = () => {
                 <Image className=" object-cover " src={bb1} alt="" />
           </div>
           <div className="flex justify-center py-7 ">
-            <button className="bg-emerald-400 w-[50%] rounded-[4px] font-dangrek text-xl py-1">
+            <button 
+            onClick={redirectToSite}
+            className="bg-emerald-400 px-10 rounded-[4px] font-dangrek text-xl py-1">
                 VERIFY
             </button>
           </div>

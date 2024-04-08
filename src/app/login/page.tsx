@@ -9,9 +9,37 @@ import Link from "next/link";
 
 const Loginpage: NextPage = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [username, setUsername] = useState(""); // Added state for username
+  const [password, setPassword] = useState(""); // Added state for password
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8080/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"email": username,"password": password }), // Included username and password in the request body
+      });
+
+      if (response.ok) {
+        
+        console.log(response);
+        const url = `/dashboard?user_email=${encodeURIComponent(username)}&name=${encodeURIComponent(password)}`;
+        window.location.href = url;
+      } else {
+        console.error("Login failed:", response.statusText);
+        alert("Login failed!")
+      }
+     
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
@@ -44,6 +72,8 @@ const Loginpage: NextPage = () => {
                 type="email"
                 name="floating_email"
                 id="floating_email"
+                value={username} // Added value attribute to bind input field with username state
+                onChange={(e) => setUsername(e.target.value)} // Added onChange event to update username state
                 className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
                 required
@@ -60,6 +90,8 @@ const Loginpage: NextPage = () => {
                 type="password"
                 name="repeat_password"
                 id="floating_repeat_password"
+                value={password} // Added value attribute to bind input field with password state
+                onChange={(e) => setPassword(e.target.value)} // Added onChange event to update password state
                 className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
                 required
@@ -88,7 +120,7 @@ const Loginpage: NextPage = () => {
             </label>
           </div>
           <div className="flex justify-center gap-3">
-            <button className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
+            <button onClick={handleLogin} className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
               Login
             </button>
             <Link href="/registration">
