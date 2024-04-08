@@ -1,7 +1,6 @@
 import React from "react";
 import Registration from "./registration/page";
 import Loginpage from "./loginpage";
-import Landing from "./landingpage";
 import Dashboard from "./dashboard/page";
 import CARD from "./component/card";
 import PLAN from "./component/plan";
@@ -10,6 +9,8 @@ import FORM from "./from/page";
 import TripCard from "./component/tripcard";
 import CAMP from "./camp/page";
 import HAPPY from "./happy/page";
+import Landing from "./landing/page";
+import Cam from "./cam";
 export default function Home() {        
   return (
     // <div>
@@ -21,7 +22,10 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
+    // <Registration/>
     // <HAPPY/>
-    <HAPPY/>
+    // <CAMP/>
+    <Landing/>
+    // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
 }

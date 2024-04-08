@@ -21,6 +21,10 @@ interface WelcomeProps {
 const FORM: NextPage<WelcomeProps> = (props) => {
   const [checkedStates, setCheckedStates] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [aadhar, setAadhar] = useState("");
+  const [drivingLicense, setDrivingLicense] = useState("");
 
   const handleCheckboxChange = (index) => {
     const newCheckedStates = [...checkedStates];
@@ -36,7 +40,7 @@ const FORM: NextPage<WelcomeProps> = (props) => {
   const fetchData = async (date) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/date?date=${date}`
+        `http://localhost:8081/date?date=${date}`
       );
       console.log(response.data["0"]);
 
@@ -52,7 +56,7 @@ const FORM: NextPage<WelcomeProps> = (props) => {
         }
       }
 
-      // You can handle the response data here
+     
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -65,11 +69,28 @@ const FORM: NextPage<WelcomeProps> = (props) => {
     fetchData(dateValue);
     // You can perform further processing with the selected date here
   };
-
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/form", {
+        userName,
+        userEmail,
+        aadhar,
+        drivingLicense,
+        selectedDate,
+        checkedStates,
+      });
+      console.log("Form submitted successfully", response.data);
+      const url = `/dashboard?user_email=${encodeURIComponent(userEmail)}&name=${encodeURIComponent(userName)}`;
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error response
+    }
+  };
   return (
     <div className="static z-10 w-screen h-screen flex justify-center overflow-hidden">
-      <div className="absolute z-20 bg-stone-900 rounded-xl max-h-[85%] min-w-[50%]  my-[3rem] mx-5 py-10  overflow-y-auto">
-        <form className="min-w-sm mx-auto space-y-5 px-10">
+      <div className="absolute z-20 bg-stone-900 rounded-xl max-h-[85%] min-w-[60%]  my-[3rem] mx-5 py-10  overflow-y-auto">
+        <form className=" mx-auto space-y-5 px-10" >
           <div id="userName">
             <label
               htmlFor="website-admin"
@@ -94,6 +115,9 @@ const FORM: NextPage<WelcomeProps> = (props) => {
                 id="website-admin"
                 className="rounded-none rounded-e-lg font-dangrek border border-gray-300 text-gray-900  block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                 placeholder="UserName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -113,6 +137,9 @@ const FORM: NextPage<WelcomeProps> = (props) => {
                 id="website-admin"
                 className="rounded-none rounded-e-lg  font-dangrek border border-gray-300 text-gray-900  block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                 placeholder="UserEmail"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -132,6 +159,9 @@ const FORM: NextPage<WelcomeProps> = (props) => {
                 id="website-admin"
                 className="rounded-none rounded-e-lg  font-dangrek border border-gray-300 text-gray-900  block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                 placeholder="1234-5679-9102"
+                value={aadhar}
+                onChange={(e) => setAadhar(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -151,6 +181,9 @@ const FORM: NextPage<WelcomeProps> = (props) => {
                 id="website-admin"
                 className="rounded-none rounded-e-lg  font-dangrek border border-gray-300 text-gray-900  block flex-1 min-w-0 w-full text-sm p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                 placeholder="DL-1420110012345"
+                value={drivingLicense}
+                onChange={(e) => setDrivingLicense(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -395,10 +428,10 @@ const FORM: NextPage<WelcomeProps> = (props) => {
               </div>
             </div>
             <div>
-              <Cam/>
+              <Cam bucket="addtobucket21" name={userName} mail_id={userEmail} endpointType="predict"/>
             </div>
             <div>
-              <button className="mt-[3rem] relative  w-full h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded">
+              <button className="mt-[3rem] relative  w-full h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded" onClick={handleSubmit}>
                       Submit
               </button>
             </div>

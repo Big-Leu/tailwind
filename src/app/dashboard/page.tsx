@@ -16,7 +16,14 @@ import PLAN from "../component/plan";
 import PP from "../component/plans";
 import axios from "axios";
 import TripCard from "../component/tripcard"; 
-const Dashboard: NextPage = () => {
+interface WelcomeProps {
+  user_email:string;
+  name:string;
+}
+const Dashboard: NextPage<WelcomeProps> = (props) => {
+  const params = new URLSearchParams(window.location.search);
+  const user_email = params.get('user_email');
+  const name = params.get('name');
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -27,7 +34,7 @@ const Dashboard: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/info");
+        const response = await axios.get("http://localhost:8081/info");
         console.log(response);
         setData(response.data);
         console.log(response.data[0].count);
@@ -40,7 +47,7 @@ const Dashboard: NextPage = () => {
 
     fetchData();
   }, []);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const handleClick1 = () => {
     console.log(isVisible)
@@ -96,7 +103,7 @@ const Dashboard: NextPage = () => {
               <label className=" font-dangrek text-2xl text-emerald-400">
                 Account
               </label>
-              <label className=" font-dangrek text-sm">abc@gmail.com</label>
+              <label className=" font-dangrek text-sm"> {user_email}</label>
             </div>
             <Image className=" object-cover " src={profile} alt="" />
           </div>
@@ -118,7 +125,7 @@ const Dashboard: NextPage = () => {
           )}
         </div> }
         {!isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
-          <TripCard/>
+          <TripCard user_email={user_email} name={name}/>
         </div> }
       </div>
     </div>
