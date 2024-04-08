@@ -49,9 +49,9 @@ const Cam: React.FC = () => {
       {url && (
         <>
           <div>
-            <button onClick={() => setUrl(null)}>Delete</button>
+            <button className="absolute mt-[2rem] ml-[1rem] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-3xl font-dangrek py-[0.1rem] px-[1rem] rounded" onClick={() => setUrl(null)}>Delete</button>
           </div>
-          <div>
+          <div className="mt-[8rem]">
             <Image src={url} alt="Screenshot" width="1920" height="1080"/>
           </div>
         </>

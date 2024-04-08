@@ -23,18 +23,18 @@ const TripCard: NextPage = () => {
                 <label className="font-dangrek ml-[3rem] text-xl">TO </label>
             </div>
           </div>
-          <div className=" flex flex-row mt-[2rem] ml-[1rem]">
+          <div className=" flex flex-row mt-[2rem] ml-[1rem] px-4 space-x-6">
             <div>
                 <div className="flex flex-col">
                     <label className="ml-[1rem] font-dangrek text-xl">NAME OF USER : </label>
                     <label className="ml-[1rem] text-emerald-500 font-dangrek  text-2xl">Ganesh Gandu </label>
                 </div>
                 <div className="flex flex-col mt-[1rem]">
-                    <label className="ml-[1rem] font-dangrek text-xl">VEHICLE ID : </label>
-                    <label className="ml-[1rem] text-emerald-500 font-dangrek  text-2xl">21IF </label>
+                    <label className="font-dangrek text-xl">VEHICLE ID : </label>
+                    <label className="text-emerald-500 font-dangrek  text-2xl">21IF </label>
                 </div>
             </div>
-            <div className="ml-[2.4rem] mt-[1.3rem] w-[150px] h-auto">
+            <div className=" mt-[1.3rem] w-[150px] h-auto">
                 <Image className=" object-cover " src={hel} alt="" />
             </div>
           </div>

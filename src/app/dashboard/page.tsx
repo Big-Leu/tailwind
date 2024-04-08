@@ -15,7 +15,7 @@ import Slider from "react-slick";
 import PLAN from "../component/plan";
 import PP from "../component/plans";
 import axios from "axios";
-
+import TripCard from "../component/tripcard"; 
 const Dashboard: NextPage = () => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -40,7 +40,16 @@ const Dashboard: NextPage = () => {
 
     fetchData();
   }, []);
-  
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleClick1 = () => {
+    console.log(isVisible)
+    setIsVisible(true); 
+  };
+  const handleClick2 = () => {
+    console.log(isVisible)
+    setIsVisible(false); 
+  };
   return (
     <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
       <div className="min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 ">
@@ -50,7 +59,7 @@ const Dashboard: NextPage = () => {
         <div className="flex flex-col space-y-6">
           <div className="flex flex-row hover:text-emerald-400 font-dangrek text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={dash} alt="" />
-            <h2 className="ml-5">DASHBOARD</h2>
+            <h2 className="ml-5"  onClick={handleClick1}>DASHBOARD</h2>
           </div>
           <div className="flex flex-row font-dangrek hover:text-emerald-400 text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={station} alt="" />
@@ -58,7 +67,7 @@ const Dashboard: NextPage = () => {
           </div>
           <div className="flex flex-row font-dangrek  hover:text-emerald-400 text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={maps} alt="" />
-            <h2 className="pl-5">MY TRIPS</h2>
+            <h2 className="pl-5" onClick={handleClick2}>MY TRIPS</h2>
           </div>
           <div className="flex flex-row font-dangrek text-xl px-10 hover:text-emerald-400 justify-stretch">
             <Image className=" object-cover " src={acc} alt="" />
@@ -92,7 +101,7 @@ const Dashboard: NextPage = () => {
             <Image className=" object-cover " src={profile} alt="" />
           </div>
         </div>
-        <div className="invisible h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
+        { isVisible && <div className=" h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
           {data.rows ? (
             data.rows.map((row, index) => (
               <PP
@@ -107,7 +116,10 @@ const Dashboard: NextPage = () => {
           ) : (
             <p>Data is not available</p>
           )}
-        </div>
+        </div> }
+        {!isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
+          <TripCard/>
+        </div> }
       </div>
     </div>
   );
