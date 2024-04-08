@@ -9,6 +9,7 @@ import PP from "./component/plans";
 import FORM from "./from/page";
 import TripCard from "./component/tripcard";
 import CAMP from "./camp/page";
+import HAPPY from "./happy/page";
 export default function Home() {        
   return (
     // <div>
@@ -20,6 +21,7 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
-    <CAMP/>
+    // <HAPPY/>
+    <HAPPY/>
   );
 }
