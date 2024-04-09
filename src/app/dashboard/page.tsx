@@ -16,6 +16,7 @@ import PLAN from "../component/plan";
 import PP from "../component/plans";
 import axios from "axios";
 import TripCard from "../component/tripcard"; 
+import BOT from "../component/bot";
 interface WelcomeProps {
   user_email:string;
   name:string;
@@ -89,8 +90,10 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
           <h1>AVAILABLE VEHICLES</h1>
         </div>
         <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
-          <CARD />
-          <CARD />
+          <CARD name="ARTHER 450" Price="60" milage="45 K/H"/>
+          <CARD name="ARTHER 450X" Price="100" milage="55 K/H" />
+          <CARD name="ARTHER 600" Price="200" milage="80 K/H"/>
+          <CARD name="ARTHER 450X" Price="300" milage="100 K/H" />
         </div>
       </div>
       <div className=" relative flex flex-col w-full h-full bg-stone-950 text-center">
@@ -127,6 +130,9 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
         {!isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
           <TripCard user_email={user_email} name={name}/>
         </div> }
+        <div className=" relative z-20 bg-stone-900">
+            <BOT/>
+        </div>
       </div>
     </div>
   );

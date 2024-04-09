@@ -11,6 +11,7 @@ import CAMP from "./camp/page";
 import HAPPY from "./happy/page";
 import Landing from "./landing/page";
 import Cam from "./cam";
+import BOT from "./component/bot";
 export default function Home() {        
   return (
     // <div>
@@ -25,7 +26,9 @@ export default function Home() {
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
-    <Landing/>
+    // <Landing/>
+    <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
+    // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
 }
