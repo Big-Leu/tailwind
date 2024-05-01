@@ -63,7 +63,7 @@ const Loginpage: NextPage = () => {
         <form className="flex flex-col space-y-10">
           <div className="text-center pt-1">
             <label className="text-white text-4xl font-normal font-dangrek">
-              Sign Up
+              LOGIN
             </label>
           </div>
           <div className="flex flex-col gap-10 px-10">

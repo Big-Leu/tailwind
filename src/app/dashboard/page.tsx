@@ -90,10 +90,10 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
           <h1>AVAILABLE VEHICLES</h1>
         </div>
         <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
-          <CARD name="ARTHER 450" Price="60" milage="45 K/H"/>
-          <CARD name="ARTHER 450X" Price="100" milage="55 K/H" />
-          <CARD name="ARTHER 600" Price="200" milage="80 K/H"/>
-          <CARD name="ARTHER 450X" Price="300" milage="100 K/H" />
+          <CARD name="ARTHER 450" Price="60" milage="45 K/H" vehicle="miniev"/>
+          <CARD name="ARTHER 450X" Price="100" milage="55 K/H" vehicle="w1"/>
+          <CARD name="kawasaki EV" Price="200" milage="80 K/H" vehicle="w2"/>
+          <CARD name="revolt rv400 450X" Price="300" milage="100 K/H" vehicle="w3"/>
         </div>
       </div>
       <div className=" relative flex flex-col w-full h-full bg-stone-950 text-center">

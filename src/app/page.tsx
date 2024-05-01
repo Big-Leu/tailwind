@@ -26,8 +26,8 @@ export default function Home() {
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
-    // <Landing/>
-    <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
+    <Landing/>
+    // <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
     // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
