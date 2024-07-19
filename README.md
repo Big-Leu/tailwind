@@ -13,14 +13,14 @@ The platform features a neural network-powered chatbot capable of natural and in
 ![Landing Page](readmeimg/1.png)
 
 ### Login Page
-![Login Page](path/to/Screenshot1.png)
+![Login Page](readmeimg/2.png)
 
 ### Authentication
 E-Rentify employs a robust user authentication system to ensure secure access to the platform. We have integrated Google OAuth for a seamless and convenient login experience, allowing users to sign in using their Google accounts with just a few clicks. Additionally, we have implemented password hashing to enhance the security of user credentials. This means that user passwords are stored in an encrypted format, making it significantly harder for unauthorized parties to access sensitive information
 
 
 ### Sign-Up Page
-![Sign-Up Page](path/to/Screenshot1.png)
+![Sign-Up Page](readmeimg/3.png)
 
 
 ### User Authentication
@@ -30,7 +30,7 @@ To further ensure the authenticity of users, we have incorporated a registration
 
 
 ### Dashboard
-![Dashboard](path/to/Screenshot1.png)
+![Dashboard](readmeimg/5.png)
 
 ## Features
 
@@ -52,11 +52,14 @@ Choose from a range of vehicles:
   - Hourly Rent: ₹100
 
 ### Vehicle Booking
-![Vehicle Booking](readmeimg/Screenshot2.png)
+![Vehicle Booking](readmeimg/4.png)
 
 
 ### Trips Booking
-![Trips Booking](path/to/Screenshot2.png)
+![Trips Booking](readmeimg/6.png)
+
+### Success Booking
+![Success Booking](readmeimg/7.png)
 
 
 ## Getting Started
