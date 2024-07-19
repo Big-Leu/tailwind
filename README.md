@@ -75,7 +75,7 @@ Choose from a range of vehicles:
    git clone https://github.com/Big-Leu/tailwind.git
    cd tailwind
 1. Install the dependency
-
+    ```bash
    npm i 
    npm run dev
  
