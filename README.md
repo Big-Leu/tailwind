@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# E-Rentify: Next-Gen Vehicle Rental Platform
+
+Welcome to E-Rentify, your one-stop solution for a seamless vehicle rental experience. This platform leverages advanced technologies like image processing and neural network-powered chatbots to offer a user-friendly and efficient service.
+
+
+
+### Chatbot Assistance
+The platform features a neural network-powered chatbot capable of natural and intuitive conversations, assisting users with queries and interactions.
+
+## Screenshots
+
+### Landing Page
+![Landing Page](readmeimg/1.png)
+
+### Login Page
+![Login Page](readmeimg/2.png)
+
+### Authentication
+E-Rentify employs a robust user authentication system to ensure secure access to the platform. We have integrated Google OAuth for a seamless and convenient login experience, allowing users to sign in using their Google accounts with just a few clicks. Additionally, we have implemented password hashing to enhance the security of user credentials. This means that user passwords are stored in an encrypted format, making it significantly harder for unauthorized parties to access sensitive information
+
+
+### Sign-Up Page
+![Sign-Up Page](readmeimg/3.png)
+
+
+### User Authentication
+image processing technology authenticates users by matching freshly captured images with information.
+
+To further ensure the authenticity of users, we have incorporated a registration form that includes an image input. This image is later used for facial authentication when a user requests a vehicle, confirming that the person making the request is indeed the registered user
+
+
+### Dashboard
+![Dashboard](readmeimg/5.png)
+
+## Features
+
+### Flexible Rental Plans
+E-Rentify offers various rental plans to suit your needs:
+- **1 Hour:** ₹59
+- **6 Hours:** ₹600
+- **12 Hours:** ₹900
+
+Each plan provides a detailed list of benefits to ensure you get the best value for your money.
+
+### Available Vehicles
+Choose from a range of vehicles:
+- **Arther 450**
+  - Mileage: 45 km/h
+  - Hourly Rent: ₹60
+- **Arther 450X**
+  - Mileage: 55 km/h
+  - Hourly Rent: ₹100
+
+### Vehicle Booking
+![Vehicle Booking](readmeimg/4.png)
+
+
+### Trips Booking
+![Trips Booking](readmeimg/6.png)
+
+### Success Booking
+![Success Booking](readmeimg/7.png)
+
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js
+- npm
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Big-Leu/tailwind.git
+   cd tailwind
+1. Install the dependency
+    ```bash
+   npm i 
+   npm run dev
+ 
