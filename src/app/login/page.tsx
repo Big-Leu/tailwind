@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEventHandler } from "react";
 import Image from "next/image";
 import facefb from "../assets/facefb.svg";
 import goog from "../assets/goog.svg";
 import bike from "../assets/bike.png";
 import { NextPage } from "next";
 import Link from "next/link";
+import { handleLoginGoogle } from "../fuctionsBackend/loginpage";
 
 const Loginpage: NextPage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -16,7 +17,7 @@ const Loginpage: NextPage = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:8080/login/", {
@@ -106,7 +107,7 @@ const Loginpage: NextPage = () => {
           </div>
           <div className="flex flex-row justify-center items-center gap-3 ">
             <Image className=" object-cover " src={facefb} alt="" />
-            <Image className=" object-cover " src={goog} alt="" />
+            <Image className=" object-cover " src={goog} alt="" onClick={handleLoginGoogle} />
           </div>
           <div className="flex  flex-row justify-center">
             <label className="font-dangrek text-xl">

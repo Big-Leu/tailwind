@@ -1,6 +1,6 @@
 import React from "react";
 import Registration from "./registration/page";
-import Loginpage from "./loginpage";
+import Loginpage from "./login/page";
 import Dashboard from "./dashboard/page";
 import CARD from "./component/card";
 import PLAN from "./component/plan";
@@ -23,11 +23,12 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
+       <Loginpage/>
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
     // <Landing/>
-    <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
+    // <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
     // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
