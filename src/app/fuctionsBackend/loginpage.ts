@@ -1,5 +1,3 @@
-
-
 export const handleLoginGoogle = async (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault(); // Prevent default action
 
@@ -16,7 +14,12 @@ export const handleLoginGoogle = async (e: React.MouseEvent<HTMLButtonElement>) 
     }
 
     const data = await response.json();
-    console.log('Login successful:', data);
+    const authorizationUrl = data.authorization_url;
+    if (authorizationUrl) {
+      window.location.href = authorizationUrl;
+    } else {
+      throw new Error('Authorization URL not found in response');
+    }
   } catch (error) {
     console.error('Error during login:', error);
   }

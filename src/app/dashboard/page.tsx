@@ -59,8 +59,8 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
     setIsVisible(false); 
   };
   return (
-    <div className="w-lvh h-lvh bg-transparent flex flex-row justify-start">
-      <div className="min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 ">
+    <div className="min-w-screen min-h-screen bg-transparent flex flex-row justify-start">
+      <div className="min-w-[20%] h-full bg-stone-900 flex flex-col space-y-10 ">
         <div className="pt-10 ml-10">
           <Image className=" object-cover " src={evlogo} alt="" />
         </div>
@@ -96,7 +96,7 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
           <CARD name="revolt rv400 450X" Price="300" milage="100 K/H" vehicle="w3"/>
         </div>
       </div>
-      <div className=" relative flex flex-col w-full h-full bg-stone-950 text-center">
+      <div className=" relative flex flex-col min-w-[80%] min-h-full bg-stone-950 text-center">
         <div className="flex flex-row">
           <label className=" font-dangrek text-emerald-400 text-xl absolute left-10 top-8">
             DASHBOARD
