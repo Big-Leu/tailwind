@@ -17,6 +17,7 @@ export const handleLoginGoogle = async (e: React.MouseEvent<HTMLButtonElement>) 
     const authorizationUrl = data.authorization_url;
     if (authorizationUrl) {
       window.location.href = authorizationUrl;
+      console.log('Redirecting to:', authorizationUrl);
     } else {
       throw new Error('Authorization URL not found in response');
     }
