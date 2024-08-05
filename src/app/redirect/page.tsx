@@ -1,7 +1,10 @@
 "use client"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import DotLoader from "react-spinners/DotLoader";
 
 const RedirectHandler = () => {
+  const [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#34D399");
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -46,7 +49,20 @@ const RedirectHandler = () => {
     }
   };
 
-  return null; // This component does not render anything
+  return (
+    <div className="flex justify-center items-center h-screen">
+      {loading && <div className="sweet-loading">
+    
+      <DotLoader
+        color={color}
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>}
+    </div>
+  );
 };
 
 export default RedirectHandler;
