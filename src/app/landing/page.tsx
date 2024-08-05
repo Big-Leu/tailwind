@@ -11,34 +11,35 @@ import Link from "next/link";
 
 const Landing: NextPage = () => {
   return (
-    <div className=" w-screen h-screen bg-transparent flex flex-row justify-start items-start overflow-hidden" >
-      <div className=" static w-[50%] drop-shadow-lg  h-full z-30 bg-stone-950 flex flex-col">
+<div  className="flex flex-col lg:flex-row">
+    <div className="bg-stone-950 flex flex-col lg:flex-row lg:min-h-screen  min-w-full p-6 overflow-x-hidden overflow-y-clip lg:overflow-x-visible lg:min-w-[50%]" >
+      <div className="w-full drop-shadow-lg z-30 bg-stone-950 flex flex-col">
         <div>
           <Image
-            className="relative justify-start z-20 pt-10 object-cover ms-10 "
+            className="relative justify-start z-20 object-cover ms-2 m-5"
             src={eev}
             alt=""
           />
         </div>
-        <div className="flex justify-end z-30 left-10 mt-[-80px] overflow-visible">
+        <div className="flex justify-end z-30 left-10 mt-[-80px] lg:absolute lg:-right-16 lg:top-20">
           <Image
-            className="relative w-[56px] pt-[50px] object-cover left-[27px]"
+            className=" w-[46px] object-cover m-5"
             src={equal}
             alt=""
           />
         </div>
         <div className="mt-[3rem]">
             <div className="relative flex flex-col">
-              <h1 className=" ms-20 font-dangrek text-5xl">Take the </h1>
+              <h1 className=" ms-10 font-dangrek text-5xl">Take the </h1>
               <div className=" flex flex-row text-center">
-                <h1 className="ms-20 font-dangrek text-5xl">Streets.</h1>
+                <h1 className="ms-10 font-dangrek text-5xl">Streets.</h1>
                 <h1 className="font-dangrek mt-3 text-emerald-400 text-3xl">
                   Allyna 1.0
                 </h1>
               </div>
             </div>
             <div className="flex">
-              <p className="relative mt-[2rem] ml-20 max-w-[614px]  font-normal font-dangrek text-[20px]  text-stone-600">
+              <p className="relative mt-[2rem] ml-10 max-w-[614px]  font-normal font-dangrek text-[20px]  text-stone-600">
                 <span className="text-white">Shift your journey, not gears.</span>{" "}
                 Navigate the city with ease on our rental vehicles, freeing your
                 mind as the bike intuitively adapts to power the speed you desire.
@@ -46,35 +47,27 @@ const Landing: NextPage = () => {
                 experience the freedom of a seamless ride.{" "}
               </p>
             </div>
-            <div className="relative ms-20 pt-5 z-30">
+            <div className="relative pt-5 z-30">
             <Link href="/login">
-              <button className="max-w-[169px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-xl font-dangrek py-3 px-4 rounded">
+              <button className="absolute right-8 max-w-[169px] bg-emerald-600 hover:bg-emerald-800 text-white font-normal text-xl font-dangrek py-3 px-4 rounded">
                 Book Ride
               </button>
             </Link>
             </div>
         </div>
-        <div className="relative flex flex-row">
-          <div className="absolute flex-none mt-[-8rem]">
-            <Image className="absolute t-0 z-20 object-cover " src={bike2} alt="" />
-            <Image className="z-10 object-cover " src={slap} alt="" />
+        <div className="flex flex-col ms-[-24px] z-20 h-[20rem] sm:h-[270px] sm:top-[-80px] relative">
+          <div className="absolute">
+            <Image className="absolute object-cover  " src={bike2} alt="" />
+            <Image className=" " src={slap} alt="" />
           </div>
-          <div className="mt-[12rem] ml-[30rem]">
-            <Image
-              className="absolute max-w-[264px] z-20 object-cover "
-              src={ather}
-              alt=""
-            />
-          </div>
+          
         </div>
       </div>
-      <div className=" relative w-[50%] h-full z-0 bg-stone-900 overflow-visible">
-        {/* <div className=" relative flex justify-start pt-[50px] ">
-          <Image className=" relative w-40px " src={equal} alt="" />
-        </div> */}
-        <div className="flex flex-col mt-[1rem]">
+    </div>
+      <div className="bg-stone-950 lg:bg-stone-900 -mt-2 min-h-full  relative z-0 " >
+        <div className="flex lg:flex-col lg:min-h-screen flex-col-reverse p-10 overflow-x-hidden lg:justify-between ">
           <div>
-            <ul className="flex flex-row justify-end font-normal font-dangrek text-emerald-400 gap-20 text-[30px] pt-8 pr-20  ">
+            <ul className="lg:flex flex-row justify-end font-normal font-dangrek text-emerald-400 gap-20 text-[30px]  hidden lg:visible">
               <li className="hover:text-emerald-500">
                 <a href="#experties">Book</a>
               </li>
@@ -86,14 +79,14 @@ const Landing: NextPage = () => {
               </li>
             </ul>
           </div>
-          <div className="h-[720px] w-[1280px]">
+          <div className="relative  sm:static  lg:relative lg:-left-[72%] lg:w-[145%]">
             <Image
-              className="relative object-cover ml-[-40rem] mt-[-9rem] z-20"
+              className=" "
               src={newev}
               alt=""
             />
           </div>
-          <div className=" relative flex flex-row  justify-around mt-[-10rem] ">
+          <div className="relative flex flex-col md:flex-row justify-around w-[40%] ml-10 sm:ml-60 md:m-0 md:w-[100%]">
             <div>
               <h2 className="font-normal font-dangrek text-[35px] text-white">
                 35 km/h
@@ -129,7 +122,7 @@ const Landing: NextPage = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 
