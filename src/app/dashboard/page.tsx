@@ -17,39 +17,27 @@ import PP from "../component/plans";
 import axios from "axios";
 import TripCard from "../component/tripcard"; 
 import BOT from "../component/bot";
-interface WelcomeProps {
-  user_email:string;
-  name:string;
-}
-const Dashboard: NextPage<WelcomeProps> = (props) => {
-  const params = new URLSearchParams(window.location.search);
-  const user_email = params.get('user_email');
-  const name = params.get('name');
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8081/info");
-        console.log(response);
-        setData(response.data);
-        console.log(response.data[0].count);
-        console.log(response.data.rows[0].hour);
-        console.log(response.data.rows[1]);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const Dashboard: NextPage = () => {
+  interface Data {
+    user_email: string;
+    name: string;
+    profile: string;
+  }
+  
+  const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
+  useEffect(() => {
+    const user_email = sessionStorage.getItem('user_email')!;
+    const name = sessionStorage.getItem('user_name')!;
+    const profile = sessionStorage.getItem('user_picture')!;
+    if (user_email && name && profile) {
+      setData({ user_email, name , profile });
+    } else {
+      console.error('No user data found in session storage');
+    }
+  }, []);
   const handleClick1 = () => {
     console.log(isVisible)
     setIsVisible(true); 
@@ -106,9 +94,9 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
               <label className=" font-dangrek text-2xl text-emerald-400">
                 Account
               </label>
-              <label className=" font-dangrek text-sm"> {user_email}</label>
+              <label className=" font-dangrek text-sm"> {data.user_email}</label>
             </div>
-            <Image className=" object-cover " src={profile} alt="" />
+            <Image className=" object-cover w-[53px] h-[52px] rounded-[26px]" src={data.profile} alt="" width={96} height={96} />
           </div>
         </div>
         { isVisible && <div className=" h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
@@ -128,7 +116,7 @@ const Dashboard: NextPage<WelcomeProps> = (props) => {
           )}
         </div> }
         {!isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
-          <TripCard user_email={user_email} name={name}/>
+          <TripCard user_email={data.user_email} name={data.name}/>
         </div> }
         <div className=" relative z-20 bg-stone-900">
             <BOT/>
