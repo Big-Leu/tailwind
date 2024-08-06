@@ -23,8 +23,8 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
-      //  <Loginpage/>
-       <Landing/>
+       <Loginpage/>
+      //  <Landing/>
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
