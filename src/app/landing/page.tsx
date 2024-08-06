@@ -13,7 +13,7 @@ const Landing: NextPage = () => {
   return (
 <div  className="flex flex-col lg:flex-row">
     <div className="bg-stone-950 flex flex-col lg:flex-row lg:min-h-screen  min-w-full p-6 overflow-x-hidden overflow-y-clip lg:overflow-x-visible lg:min-w-[50%]" >
-      <div className="w-full drop-shadow-lg z-30 bg-stone-950 flex flex-col">
+      <div className="w-full drop-shadow-lg z-30 bg-stone-950 flex flex-col justify-between">
         <div>
           <Image
             className="relative justify-start z-20 object-cover ms-2 m-5"
@@ -55,9 +55,9 @@ const Landing: NextPage = () => {
             </Link>
             </div>
         </div>
-        <div className="flex flex-col ms-[-24px] z-20 h-[20rem] sm:h-[270px] sm:top-[-80px] relative">
-          <div className="absolute">
-            <Image className="absolute object-cover  " src={bike2} alt="" />
+        <div className="flex flex-col ms-[-24px] z-20 h-[20rem] sm:h-[270px]  relative">
+          <div className="absolute bottom-[-45vw] md:bottom-[-50vw] lg:bottom-[-25vw]">
+            <Image className="absolute object-cover lg:-top-[20px]" src={bike2} alt="" />
             <Image className=" " src={slap} alt="" />
           </div>
           
@@ -79,9 +79,9 @@ const Landing: NextPage = () => {
               </li>
             </ul>
           </div>
-          <div className="relative  sm:static  lg:relative lg:-left-[72%] lg:w-[145%]">
+          <div className="relative  sm:static  lg:relative lg:-left-[70%] lg:w-[160%]">
             <Image
-              className=" "
+              className="lg:w-[58vw]"
               src={newev}
               alt=""
             />
