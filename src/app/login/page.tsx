@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, MouseEventHandler } from "react";
+import React from "react";
 import Image from "next/image";
 import facefb from "../assets/facefb.svg";
 import goog from "../assets/goog.svg";
@@ -7,46 +7,57 @@ import bike from "../assets/bike.png";
 import { NextPage } from "next";
 import Link from "next/link";
 import { handleLoginGoogle } from "../fuctionsBackend/loginpage";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Define the schema using zod
+const loginSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+  staySignedIn: z.boolean().optional(),
+});
+
+type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const Loginpage: NextPage = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [username, setUsername] = useState(""); // Added state for username
-  const [password, setPassword] = useState(""); // Added state for password
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormInputs>({
+    resolver: zodResolver(loginSchema),
+    mode:"all"
+  });
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
 
-  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const onSubmit = async (data: LoginFormInputs) => {
     try {
       const response = await fetch("http://localhost:8080/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({"email": username,"password": password }), // Included username and password in the request body
+        body: JSON.stringify(data), // Send form data
       });
 
       if (response.ok) {
-        
         console.log(response);
-        const url = `/dashboard?user_email=${encodeURIComponent(username)}&name=${encodeURIComponent(password)}`;
+        const url = `/dashboard?user_email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.password)}`;
         window.location.href = url;
       } else {
         console.error("Login failed:", response.statusText);
-        alert("Login failed!")
+        alert("Login failed!");
       }
-     
     } catch (error) {
       console.error("Error during login:", error);
     }
   };
 
   return (
-    <div className=" xl:w-lvh xl:h-lvh md:flex-col md:justify-end md:h-full sm:flex-col bg-transparent flex xl:flex-row justify-start">
-      <div className="static grow min-h-dvh min-w-dvh xl:w-[700px] bg-stone-900 flex flex-col space-y-10 ">
-        <div className=" bg-stone-60 w-450 h-45 px-20 pt-20">
+    <div className="bg-transparent flex flex-row items-center  h-[100vh] resize-both min-h-[600px]">
+      <div className=" bg-stone-900 flex flex-col space-y-10 h-[100%] justify-center">
+        <div className=" bg-stone-60 w-450 h-45 px-20 pt-20 absolute -top-10">
           <svg
             width="41"
             height="45"
@@ -61,48 +72,44 @@ const Loginpage: NextPage = () => {
           </svg>
         </div>
         <div></div>
-        <form className="flex flex-col space-y-10">
+        <form className="flex flex-col space-y-10  lg:w-[38vw] w-[100vw] items-center" onSubmit={handleSubmit(onSubmit)}>
           <div className="text-center pt-1">
             <label className="text-white text-4xl font-normal font-dangrek">
               LOGIN
             </label>
           </div>
-          <div className="flex flex-col gap-10 px-10">
+          <div className="flex flex-col gap-10 px-10 w-[80%]">
             <div className="relative w-full min-w-[200px] h-14">
               <input
                 type="email"
-                name="floating_email"
-                id="floating_email"
-                value={username} // Added value attribute to bind input field with username state
-                onChange={(e) => setUsername(e.target.value)} // Added onChange event to update username state
+                {...register("email")}
                 className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
                 required
               />
               <label
                 form="floating_email"
-                className="flex w-full font-dangrek h-full select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-emerald-400 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
+                className="flex w-full font-dangrek h-full select-none pointer-events-none absolute left-0 !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-emerald-400 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
               >
-                USERNAME
+                EMAIL
               </label>
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
             </div>
             <div className="relative w-full min-w-[200px] h-14">
               <input
                 type="password"
-                name="repeat_password"
-                id="floating_repeat_password"
-                value={password} // Added value attribute to bind input field with password state
-                onChange={(e) => setPassword(e.target.value)} // Added onChange event to update password state
+                {...register("password")}
                 className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
                 required
               />
               <label
                 form="floating_repeat_password"
-                className="flex w-full h-full font-dangrek select-none pointer-events-none absolute left-0  !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-blue-gray-200 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
+                className="flex w-full h-full font-dangrek select-none pointer-events-none absolute left-0 !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-emerald-400 peer-focus:text-emerald-400 before:border-blue-gray-200 peer-focus:before:!border-emerald-400 after:border-blue-gray-200 peer-focus:after:!border-emerald-400"
               >
                 PASSWORD
               </label>
+              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
             </div>
           </div>
           <div className="flex flex-row justify-center items-center gap-3 ">
@@ -114,14 +121,13 @@ const Loginpage: NextPage = () => {
               <input
                 type="checkbox"
                 className="accent-emerald-400"
-                checked={isChecked}
-                onChange={handleCheckboxChange}
+                {...register("staySignedIn")}
               />{" "}
               Stay signed in
             </label>
           </div>
           <div className="flex justify-center gap-3">
-            <button onClick={handleLogin} className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
+            <button type="submit" className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
               Login
             </button>
             <Link href="/registration">
@@ -131,21 +137,23 @@ const Loginpage: NextPage = () => {
             </Link>
           </div>
         </form>
-        <div className="flex flex-col items-center pt-32 space-y-4">
+        {/* <div className="flex flex-col items-center pt-32 space-y-4">
           <div className="">
             <label className=" text-white text-2xl font-normal font-dangrek">
-              CAN’T SIGN IN?
+              New Customer?
             </label>
           </div>
-          <div className=" text-center pt-5">
-            <label className=" text-stone-400 text-xl font-dangrek">
-              By logging in, you agree to our terms and condition
-            </label>
+          <div className="flex justify-center">
+            <Link href="/registration">
+              <button className="w-[114px] bg-emerald-400 hover:bg-emerald-500 text-white font-normal text-xl font-dangrek py-2 px-4 rounded">
+                Sign up
+              </button>
+            </Link>
           </div>
-        </div>
+        </div>   */}
       </div>
-      <div className=" static flex flex-col w-full h-full bg-stone-950 text-center">
-        <div className=" relative text-centre pt-10">
+      <div className="w-full  bg-stone-950  relative h-[100%] lg:flex lg:justify-center hidden">
+        <div className=" absolute text-centre top-10 left-[10vw]">
           <span className="text-emerald-400 text-5xl font-dangrek pt-6">
             Rev Up Your Day:
           </span>
@@ -160,19 +168,12 @@ const Loginpage: NextPage = () => {
             <br />
           </span>
         </div>
-        <div className=" relative grow flex justify-center items-center h-screen ">
-          <Image
-            className=" object-cover w-[900px] h-[690px]"
-            src={bike}
-            alt=""
-          />
-        </div>
-        <div className="relative grid justify-items-end px-6 text-stone-40 text-4xl font-normal font-dangrek">
-          v1.0.1
-        </div>
+        <Image src={bike} alt="Bike" width={800} className="self-center" />
       </div>
     </div>
   );
 };
 
 export default Loginpage;
+
+
