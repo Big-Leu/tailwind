@@ -23,9 +23,9 @@ export default function Home() {
     //     color="bg-stone-700"
     //   />
     // </div>
-       <Loginpage/>
+      //  <Loginpage/>
       //  <Landing/>
-    // <Registration/>
+    <Registration/>
     // <HAPPY/>
     // <CAMP/>
     // <Landing/>

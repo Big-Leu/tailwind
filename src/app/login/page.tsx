@@ -114,7 +114,7 @@ const Loginpage: NextPage = () => {
           </div>
           <div className="flex flex-row justify-center items-center gap-3 ">
             <Image className=" object-cover " src={facefb} alt="" />
-            <Image className=" object-cover " src={goog} alt="" onClick={handleLoginGoogle} />
+            <Image className=" object-cover " src={goog} alt="" onClick={(e: React.MouseEvent<HTMLImageElement>) => handleLoginGoogle(e)} />
           </div>
           <div className="flex  flex-row justify-center">
             <label className="font-dangrek text-xl">

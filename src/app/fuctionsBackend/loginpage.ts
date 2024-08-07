@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const handleLoginGoogle = async (e: React.MouseEvent<HTMLButtonElement>) => {
+export const handleLoginGoogle = async (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
   e.preventDefault(); // Prevent default action
 
   try {
