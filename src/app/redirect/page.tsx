@@ -21,6 +21,7 @@ const RedirectHandler = () => {
         }
 
         const data = await response.json();
+        console.log('User data:', data);
         handleResponse(data);
       } catch (error) {
         console.error('Error fetching user data:', error);

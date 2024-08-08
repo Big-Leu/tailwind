@@ -29,6 +29,7 @@ const Registration: NextPage = () => {
     mode: "all"
   });
 
+   console.log(watch());
   // const handleRegister = (data: LoginFormInputs) => {
   //   console.log(data);
   // };

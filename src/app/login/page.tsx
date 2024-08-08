@@ -10,7 +10,7 @@ import { handleLoginGoogle } from "../fuctionsBackend/loginpage";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
+import {handleLogin} from "../fuctionsBackend/basiclogin";
 // Define the schema using zod
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -30,30 +30,6 @@ const Loginpage: NextPage = () => {
     mode:"all"
   });
 
-
-  const onSubmit = async (data: LoginFormInputs) => {
-    try {
-      const response = await fetch("http://localhost:8080/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data), // Send form data
-      });
-
-      if (response.ok) {
-        console.log(response);
-        const url = `/dashboard?user_email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.password)}`;
-        window.location.href = url;
-      } else {
-        console.error("Login failed:", response.statusText);
-        alert("Login failed!");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-    }
-  };
-
   return (
     <div className="bg-transparent flex flex-row items-center  h-[100vh] resize-both min-h-[600px]">
       <div className=" bg-stone-900 flex flex-col space-y-10 h-[100%] justify-center">
@@ -72,7 +48,7 @@ const Loginpage: NextPage = () => {
           </svg>
         </div>
         <div></div>
-        <form className="flex flex-col space-y-10  lg:w-[38vw] w-[100vw] items-center" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col space-y-10  lg:w-[38vw] w-[100vw] items-center" onSubmit={handleSubmit(handleLogin)}>
           <div className="text-center pt-1">
             <label className="text-white text-4xl font-normal font-dangrek">
               LOGIN

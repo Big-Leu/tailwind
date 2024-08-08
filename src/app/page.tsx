@@ -15,17 +15,17 @@ import BOT from "./component/bot";
 export default function Home() {        
   return (
     // <div>
-    //   <FORM
-    //     hr={0}
-    //     price="dsdssdd"
-    //     label="row.label"
-    //     icon="row.icon"
-    //     color="bg-stone-700"
-    //   />
+      // <FORM
+      //   hr={0}
+      //   price="dsdssdd"
+      //   label="row.label"
+      //   icon="row.icon"
+      //   color="bg-stone-700"
+      // />
     // </div>
-      //  <Loginpage/>
+       <Loginpage/>
       //  <Landing/>
-    <Registration/>
+    // <Registration/>
     // <HAPPY/>
     // <CAMP/>
     // <Landing/>
