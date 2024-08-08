@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { handleRegister } from "../fuctionsBackend/registration";
+import '../../app/globals.css'
+
 const loginSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters long"),
   lastName: z.string().min(2, "Last name must be at least 2 characters long"),
@@ -24,7 +26,7 @@ const loginSchema = z.object({
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const Registration: NextPage = () => {
-  const { register, handleSubmit, formState: { errors }, watch} = useForm<LoginFormInputs>({
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
     mode: "all"
   });
@@ -35,29 +37,29 @@ const Registration: NextPage = () => {
   // };
 
   return (
-    <div className="min-w-screen min-h-full bg-transparent flex flex-row justify-start items-start overflow-hidden">
-      <div className="static min-w-[36%] min-h-full bg-stone-900 overflow-y-clip">
-        <div className="relative w-full h-full flex flex-col space-y-[6rem]">
-          <div className="relative w-[60px] h-[64px] mt-[5rem] ml-[4rem]">
-            <Image className="object-cover" src={eev} alt="" />
+    <div className="w-full min-h-screen bg-transparent flex flex-col md:flex-row justify-start items-center overflow-hidden">
+      <div className="md:h-screen md:w-[35%] bg-stone-900 overflow-hidden md:flex  md:flex-col md:justify-center">
+        <div className="">
+          <div className="">
+            <Image className="object-cover mx-12 my-5" src={eev} alt="" />
           </div>
-          <div className="relative px-10">
-            <Image className="object-cover" src={hel} alt="" />
+          <div className="px-10">
+            <Image className="object-cover m-2" src={hel} alt="" />
           </div>
-          <div className='relative text-center px-10'>
-            <div className="relative font-normal font-dangrek text-5xl">
+          <div className='text-start  m-10'>
+            <div className="font-normal font-dangrek text-5xl">
               <h1>Book on demand</h1>
-              <h1 className="relative">Right in your hand</h1>
+              <h1 className="">Right in your hand</h1>
             </div>
-            <div className="mt-[1rem] relative font-normal font-dangrek text-[30px] text-stone-600">
-              <p>Welcome to the future of reading with our Rental Book App.</p>
+            <div className="mt-[1rem] font-normal font-dangrek text-[30px] text-stone-600">
+              <p>Register to the future of riding with our Scooty Rental App.</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="relative min-w-[64%] min-h-full bg-stone-950">
-        <form className="w-auto px-10 py-10 min-h-full" onSubmit={handleSubmit(handleRegister)}>
-          <div className="relative z-0 w-full h-20 mb-5 ">
+      <div className="md:h-screen w-[100%] md:w-[65%] px-[5%] bg-stone-950 flex flex-col md:justify-center gap-6">
+        <form className="" onSubmit={handleSubmit(handleRegister)}>
+          <div className="relative  w-full h-20 my-10 group">
             <input
               {...register("email")}
               required
@@ -68,7 +70,7 @@ const Registration: NextPage = () => {
             />
             <label
               htmlFor="floating_email"
-              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+              className={`peer-focus:font-medium  text-sm duration-300 transform -translate-y-6 scale-75  origin-[0]  z-50 absolute top-6
                           ${errors.email ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
                           peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
                           ${errors.email ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
@@ -89,7 +91,7 @@ const Registration: NextPage = () => {
             />
             <label
               htmlFor="floating_password"
-              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 z-50 top-6  origin-[0] 
                           ${errors.password ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
                           peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
                           ${errors.password ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
@@ -110,7 +112,7 @@ const Registration: NextPage = () => {
             />
             <label
               htmlFor="floating_repeat_password"
-              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 z-50 top-6  origin-[0] 
                           ${errors.confirmPassword ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
                           peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
                           ${errors.confirmPassword ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
@@ -120,7 +122,7 @@ const Registration: NextPage = () => {
             </label>
             {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}
           </div>
-          <div className="grid xl:gap-10 md:grid-cols-2 h-20 md:gap-6">
+          <div className="md:grid xl:gap-10 md:grid-cols-2 h-20 md:gap-6">
             <div className="relative z-0 w-full mb-5 group">
               <input
                 {...register("firstName")}
@@ -132,7 +134,7 @@ const Registration: NextPage = () => {
               />
               <label
                 htmlFor="floating_first_name"
-                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 z-50 top-6  origin-[0] 
                             ${errors.firstName ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
                             peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
                             ${errors.firstName ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
@@ -142,29 +144,30 @@ const Registration: NextPage = () => {
               </label>
               {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
             </div>
-            <div className="relative z-0 w-full mb-5 group h-20">
+            <div className="relative z-0 w-full mb-5 group">
               <input
                 {...register("lastName")}
                 required
                 type="text"
                 className={`h-20 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white focus:outline-none focus:ring-0 peer 
-                            ${errors.lastName ? 'border-red-500 dark:border-red-500 focus:border-red-500 dark:focus:border-red-500' : 'border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-emerald-400'}`}
+      ${errors.lastName ? 'border-red-500 dark:border-red-500 focus:border-red-500 dark:focus:border-red-500' : 'border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-emerald-400'}`}
                 placeholder=" "
               />
               <label
                 htmlFor="floating_last_name"
-                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
-                            ${errors.lastName ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
-                            peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
-                            ${errors.lastName ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
-                            peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
+                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 z-10 top-6 origin-[0] 
+      ${errors.lastName ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
+      peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
+      ${errors.lastName ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
+      peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
               >
                 Last Name
               </label>
               {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
             </div>
+
           </div>
-          <div className="relative pt-10  grid md:grid-cols-1 md:gap-6 h-20">
+          <div className="relative mt-32 md:mt-10  md:grid md:grid-cols-1 md:gap-6 h-20">
             <div className="relative z-0 w-full mb-5 group">
               <input
                 {...register("phone")}
@@ -176,7 +179,7 @@ const Registration: NextPage = () => {
               />
               <label
                 htmlFor="floating_phone"
-                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+                className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75 z-50 top-6  origin-[0] 
                             ${errors.phone ? 'text-red-500 dark:text-red-500' : 'text-gray-500 dark:text-gray-400'} 
                             peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto 
                             ${errors.phone ? '' : 'peer-focus:text-blue-600 peer-focus:dark:text-emerald-400'} 
@@ -187,16 +190,16 @@ const Registration: NextPage = () => {
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
             </div>
           </div>
-          <div className="relative px-10 mt-[5rem] z-0 w-full">
+          {/* <div className="relative px-10 mt-[5rem] z-0 w-full">
             <Cam bucket="addtobucket21" name={watch.firstName} mail_id={watch.email} endpointType="predict"/>
-          </div>
-          <div className="relative flex justify-center w-full mt-[10rem]">
+          </div> */}
+          <div className="flex justify-center w-full mt-10 md:mt-14 mb-10">
             <button
               type="submit"
-              className="relative min-w-[30%] h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded"
-              // onClick={handleSubmit(handleRegister)}
+              className=" min-w-[30%] h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded"
+            // onClick={handleSubmit(handleRegister)}
             >
-              Submit
+              Register
             </button>
           </div>
         </form>
