@@ -17,6 +17,7 @@ import PP from "../component/plans";
 import axios from "axios";
 import TripCard from "../component/tripcard"; 
 import BOT from "../component/bot";
+import { useFetchPlans } from '../fuctionsBackend/plans';
 
 const Dashboard: NextPage = () => {
   interface Data {
@@ -24,7 +25,8 @@ const Dashboard: NextPage = () => {
     name: string;
     profile: string;
   }
-  
+  const { data:plans } = useFetchPlans();
+  console.log(plans);
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
 
@@ -100,14 +102,14 @@ const Dashboard: NextPage = () => {
           </div>
         </div>
         { isVisible && <div className=" h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
-          {data.rows ? (
-            data.rows.map((row, index) => (
+          {plans && plans.result ? (
+            plans.result.map((row:any, index:any) => (
               <PP
-                hr={row.hour}
+                hr={row.hours}
                 price={row.price}
-                label={row.label}
-                icon={row.icon}
-                color={row.color}
+                labels={row.label}  // Updated to handle array
+                icons={row.icon}    // Updated to handle array
+                colors={row.color}  // Updated to handle array
                 key={index}
               />
             ))

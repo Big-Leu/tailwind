@@ -23,13 +23,13 @@ export default function Home() {
       //   color="bg-stone-700"
       // />
     // </div>
-       <Loginpage/>
+      //  <Loginpage/>
       //  <Landing/>
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
     // <Landing/>
-    // <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
+    <Dashboard/>
     // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
