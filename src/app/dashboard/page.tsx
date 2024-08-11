@@ -47,7 +47,7 @@ const Dashboard: NextPage = () => {
     setIsVisible(false); 
   };
   return (
-    <div className="min-w-screen min-h-screen bg-transparent flex flex-row justify-start">
+    <div className="min-w-screen h-screen bg-transparent flex flex-row justify-start">
       <div className="min-w-[20%] h-full bg-stone-900 flex flex-col space-y-10 ">
         <div className="pt-10 ml-10">
           <Image className=" object-cover " src={evlogo} alt="" />
@@ -77,7 +77,7 @@ const Dashboard: NextPage = () => {
         <div className=" font-dangrek text-2xl text-center">
           <h1>AVAILABLE VEHICLES</h1>
         </div>
-        <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
+        <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-scroll h-64">
           <CARD name="ARTHER 450" Price="60" milage="45 K/H" vehicle="miniev"/>
           <CARD name="ARTHER 450X" Price="100" milage="55 K/H" vehicle="w1"/>
           <CARD name="kawasaki EV" Price="200" milage="80 K/H" vehicle="w2"/>

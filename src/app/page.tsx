@@ -25,11 +25,11 @@ export default function Home() {
     // </div>
       //  <Loginpage/>
       //  <Landing/>
-    <Registration/>
+    // <Registration/>
     // <HAPPY/>
     // <CAMP/>
     // <Landing/>
-    // <Dashboard user_email="bigleu88@gmail.com" name="Abhishek Rawat"/>
+    <Dashboard/>
     // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
