@@ -18,15 +18,15 @@ import axios from "axios";
 import TripCard from "../component/tripcard"; 
 import BOT from "../component/bot";
 import { useFetchPlans } from '../fuctionsBackend/plans';
-
+import { plans } from '../utils/data';
 const Dashboard: NextPage = () => {
   interface Data {
     user_email: string;
     name: string;
     profile: string;
   }
-  const { data:plans } = useFetchPlans();
-  console.log(plans);
+  // const { data:plans } = useFetchPlans();
+  // console.log(plans);
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
 

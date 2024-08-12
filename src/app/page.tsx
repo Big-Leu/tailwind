@@ -28,8 +28,8 @@ export default function Home() {
     // <Registration/>
     // <HAPPY/>
     // <CAMP/>
-    // <Landing/>
-    <Dashboard/>
+    <Landing/>
+    // <Dashboard/>
     // <BOT/>
     // <Cam bucket="addtobucket21" name="ganesh" mail_id="sdjsj@jfsdhk.com" endpointType="recognize" />
   );
