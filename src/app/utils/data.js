@@ -4,6 +4,71 @@ import { MdWorkspacesOutline } from "react-icons/md";
 import { MdBathtub } from "react-icons/md";
 import {FaClinicMedical} from "react-icons/fa"
 import {GiFamilyHouse} from "react-icons/gi"
+
+export const plans = {
+  "message": "formservice fetched successfully",
+  "status": "FETCHED",
+  "result": [
+    {
+      "hours": "1",
+      "price": "59",
+      "icon": [
+        "cross",
+        "check"
+      ],
+      "color": [
+        "text-stone-950",
+        "text-emerald-400"
+      ],
+      "label": [
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet."
+      ]
+    },
+    {
+      "hours": "12",
+      "price": "900",
+      "icon": [
+        "cross",
+        "check"
+      ],
+      "color": [
+        "text-stone-950",
+        "text-emerald-400"
+      ],
+      "label": [
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet."
+      ]
+    },
+    {
+      "hours": "6",
+      "price": "600",
+      "icon": [
+        "cross",
+        "check",
+        "cross"
+      ],
+      "color": [
+        "text-stone-950",
+        "text-emerald-400",
+        "text-stone-950"
+      ],
+      "label": [
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet."
+      ]
+    }
+  ],
+  "result_length": 3,
+  "metadata": {
+    "total": 3,
+    "page": 1,
+    "size": 50,
+    "pages": 1
+  }
+}
 export const projectExperience = [
   {
     name: "Bathroom Design",

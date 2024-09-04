@@ -49,9 +49,6 @@ const PP: NextPage<WelcomeProps> = ({ hr, price, labels, icons, colors }) => {
         <div className="w-full h-full relative flex flex-col space-y-5 px-[3rem] pt-20">
           {labels && labels.map((label, idx) => (
             <div className="relative w-full flex flex-row space-x-7" key={idx}>
-              <>
-              {console.log(`Label ${idx + 1}:`, label)}
-              </>
               <Image
                 className="z-30 object-cover max-w-5 max-h-5 mt-1"
                 src={icons[idx] === "check" ? check : cross}

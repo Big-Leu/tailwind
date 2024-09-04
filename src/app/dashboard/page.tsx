@@ -20,15 +20,15 @@ import BOT from "../component/bot";
 import { useFetchPlans } from '../fuctionsBackend/plans';
 import menuimg from "../assets/menu.png"
 import closeimg from "../assets/close.png"
-
+import { plans } from '../utils/data';
 const Dashboard: NextPage = () => {
   interface Data {
     user_email: string;
     name: string;
     profile: string;
   }
-  const { data:plans } = useFetchPlans();
-  console.log(plans);
+  // const { data:plans } = useFetchPlans();
+  // console.log(plans);
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [src,setSrc] = useState(menuimg);
