@@ -18,6 +18,8 @@ import axios from "axios";
 import TripCard from "../component/tripcard"; 
 import BOT from "../component/bot";
 import { useFetchPlans } from '../fuctionsBackend/plans';
+import menuimg from "../assets/menu.png"
+import closeimg from "../assets/close.png"
 import { plans } from '../utils/data';
 const Dashboard: NextPage = () => {
   interface Data {
@@ -29,6 +31,7 @@ const Dashboard: NextPage = () => {
   // console.log(plans);
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [src,setSrc] = useState(menuimg);
 
   useEffect(() => {
     const user_email = sessionStorage.getItem('user_email')!;
@@ -48,11 +51,20 @@ const Dashboard: NextPage = () => {
     console.log(isVisible)
     setIsVisible(false); 
   };
+
+ const handlemenu =  (event:React.MouseEvent<HTMLImageElement>) =>{
+    if(src==menuimg) setSrc(closeimg);
+    else setSrc(menuimg);
+ }
+
   return (
-    <div className="min-w-screen h-screen bg-transparent flex flex-row justify-start">
-      <div className="min-w-[20%] h-full bg-stone-900 flex flex-col space-y-10 ">
+    <div className="min-w-screen  h-screen bg-transparent flex flex-row justify-start overflow-hidden">
+      <Image className={`object-cover absolute z-20 m-10  cursor-pointer transition-all ${src==closeimg && "translate-x-56 p-2 hover:rotate-90 "} `} onClick={handlemenu} src={src} alt="menu"/>
+      
+      
+      <div className={`min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 overflow-y-auto absolute z-10 transition-all ${src==menuimg && "-translate-x-[300px] invisible"}`}>
         <div className="pt-10 ml-10">
-          <Image className=" object-cover " src={evlogo} alt="" />
+          <Image className="object-cover" src={evlogo} alt="" />
         </div>
         <div className="flex flex-col space-y-6">
           <div className="flex flex-row hover:text-emerald-400 font-dangrek text-xl px-10 justify-stretch">
@@ -79,16 +91,16 @@ const Dashboard: NextPage = () => {
         <div className=" font-dangrek text-2xl text-center">
           <h1>AVAILABLE VEHICLES</h1>
         </div>
-        <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-scroll  overflow-x-hidden h-full ">
+        <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-scroll  overflow-x-hidden min-h-[200px]">
           <CARD name="ARTHER 450" Price="60" milage="45 K/H" vehicle="miniev"/>
           <CARD name="ARTHER 450X" Price="100" milage="55 K/H" vehicle="w1"/>
           <CARD name="kawasaki EV" Price="200" milage="80 K/H" vehicle="w2"/>
           <CARD name="revolt rv400 450X" Price="300" milage="100 K/H" vehicle="w3"/>
         </div>
       </div>
-      <div className=" relative flex flex-col min-w-[80%] min-h-full bg-stone-950 text-center">
+      <div className=" relative flex flex-col w-[100%] bg-stone-950 text-center ml-20 p-10">
         <div className="flex flex-row">
-          <label className=" font-dangrek text-emerald-400 text-xl absolute left-10 top-8">
+          <label className=" font-dangrek text-emerald-400 text-xl absolute left-10 top-10">
             DASHBOARD
           </label>
           <div className=" absolute right-4 top-5 space-x-4 flex flex-row">
@@ -101,7 +113,7 @@ const Dashboard: NextPage = () => {
             <Image className=" object-cover w-[53px] h-[52px] rounded-[26px]" src={data.profile} alt="" width={96} height={96} />
           </div>
         </div>
-        { isVisible && <div className=" h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto">
+        { isVisible && <div className=" h-full flex flex-row pt-10 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-auto min-h-[200px]">
           {plans && plans.result ? (
             plans.result.map((row:any, index:any) => (
               <PP
