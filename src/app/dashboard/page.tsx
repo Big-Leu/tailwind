@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { NextPage } from "next";
 import Link from "next/link";
@@ -31,8 +31,11 @@ const Dashboard: NextPage = () => {
   // console.log(plans);
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [other,setOther] = useState<boolean>(false);
   const [src,setSrc] = useState(menuimg);
-
+  const [curRoute, setCurrentRoute]=useState("DASHBOARD"); 
+  const scrollContainer = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     const user_email = sessionStorage.getItem('user_email')!;
     const name = sessionStorage.getItem('user_name')!;
@@ -44,12 +47,29 @@ const Dashboard: NextPage = () => {
     }
   }, []);
   const handleClick1 = () => {
-    console.log(isVisible)
-    setIsVisible(true); 
+    setOther(false)
+    setIsVisible(true);
+    setCurrentRoute("DASHBOARD"); 
   };
   const handleClick2 = () => {
-    console.log(isVisible)
     setIsVisible(false); 
+    setOther(false)
+    setCurrentRoute("MY TRIPS")
+  };
+
+  const handleClick3 = () => {
+    setOther(true)
+    setCurrentRoute("STATIONS")
+  };
+
+  const handleClick4 = () => {
+    setOther(true)
+    setCurrentRoute("ACCOUNT")
+  };
+
+  const handleClick5 = () => {
+    setOther(true)
+    setCurrentRoute("SUBSCRIPTION PLAN")
   };
 
  const handlemenu =  (event:React.MouseEvent<HTMLImageElement>) =>{
@@ -57,35 +77,57 @@ const Dashboard: NextPage = () => {
     else setSrc(menuimg);
  }
 
+ useEffect(() => {
+  const handleScroll = (e: WheelEvent) => {
+    if (scrollContainer.current) {
+        const scrollSpeed = 0.5; // Increase or decrease this value for faster/slower scrolling
+        scrollContainer.current.scrollLeft += e.deltaY * scrollSpeed;
+    }
+  };
+
+  const current = scrollContainer.current;
+
+  if (current) {
+    current.addEventListener('wheel', handleScroll, { passive: false });
+  }
+
+  return () => {
+    if (current) {
+      current.removeEventListener('wheel', handleScroll);
+    }
+  };
+}, []);
+
+
   return (
-    <div className="min-w-screen  h-screen bg-stone-950 flex flex-row justify-start overflow-hidden select-none ">
+    <div className="min-w-screen  h-screen bg-stone-950 flex flex-row justify-start  select-none">
       <Image className={`object-cover absolute z-20 m-10  cursor-pointer transition-all ${src==closeimg && "translate-x-56 p-2 hover:rotate-90 "} `} onClick={handlemenu} src={src} alt="menu"/>
       
       
-      <div className={`min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 overflow-y-auto absolute z-10 transition-all ${src==menuimg && "-translate-x-[300px] invisible"}`}>
+      <div className={`min-w-[300px] h-full bg-stone-900 flex flex-col space-y-10 overflow-y-auto absolute z-10  bg-opacity-80 backdrop-blur-lg  transition-all ${src==menuimg && "-translate-x-[300px] invisible"}`}>
         <div className="pt-10 ml-10">
           <Image className="object-cover" src={evlogo} alt="" />
         </div>
         <div className="flex flex-col space-y-6">
           <div className="flex flex-row hover:text-emerald-400 font-dangrek text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={dash} alt="" />
-            <h2 className="ml-5"  onClick={handleClick1}>DASHBOARD</h2>
+            <h2 className={`ml-5 ${curRoute=="DASHBOARD" && "text-stone-400 translate-x-2"}`}  onClick={handleClick1}>DASHBOARD</h2>
           </div>
           <div className="flex flex-row font-dangrek hover:text-emerald-400 text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={station} alt="" />
-            <h2 className="pl-5 pt-1">STATIONS</h2>
+            <h2 className={`pl-5 pt-1 ${curRoute=="STATIONS" && "text-stone-400 translate-x-2"}`} onClick={handleClick3}>STATIONS</h2>
           </div>
           <div className="flex flex-row font-dangrek  hover:text-emerald-400 text-xl px-10 justify-stretch">
             <Image className=" object-cover " src={maps} alt="" />
-            <h2 className="pl-5" onClick={handleClick2}>MY TRIPS</h2>
+            <h2 className={`pl-5 ${curRoute=="MY TRIPS" && "text-stone-400 translate-x-2"}`} onClick={handleClick2}>MY TRIPS</h2>
           </div>
           <div className="flex flex-row font-dangrek text-xl px-10 hover:text-emerald-400 justify-stretch">
             <Image className=" object-cover " src={acc} alt="" />
-            <h2 className="pl-5">ACCOUNT</h2>
+            <h2 className={`pl-5 ${curRoute=="ACCOUNT" && "text-stone-400 translate-x-2"}`} onClick={handleClick4}>ACCOUNT</h2>
           </div>
           <div className="flex flex-row font-dangrek text-xl hover:text-emerald-400 px-10 justify-stretch">
             <Image className=" object-cover " src={sub} alt="" />
-            <h2 className="pl-5">SUBCRIPTION PLAN</h2>
+            <h2 className={`pl-5 ${curRoute=="SUBSCRIPTION PLAN" && "text-stone-400 translate-x-2"}`} onClick={handleClick5}>SUBSCRIPTION PLAN</h2>
           </div>
         </div>
         <div className=" font-dangrek text-2xl text-center">
@@ -98,10 +140,10 @@ const Dashboard: NextPage = () => {
           <CARD name="revolt rv400 450X" Price="300" milage="100 K/H" vehicle="w3"/>
         </div>
       </div>
-      <div className=" relative flex flex-col min-w-full bg-stone-950 text-center px-[4rem] p-10">
+      <div className={`relative flex flex-col  bg-stone-950 text-center w-[100%] px-[4rem] p-10 ${src==closeimg && "lg:translate-x-[260px] lg:w-[80%]"}`}>
         <div className="flex flex-row">
           <label className=" font-dangrek text-emerald-400 text-xl absolute left-24 top-10">
-            DASHBOARD
+            {curRoute}
           </label>
           <div className=" absolute right-4 top-5 space-x-4 flex flex-row">
             <div className=" flex flex-col">
@@ -113,7 +155,7 @@ const Dashboard: NextPage = () => {
             <Image className=" object-cover w-[53px] h-[52px] rounded-[26px]" src={data.profile} alt="" width={96} height={96} />
           </div>
         </div>
-        { isVisible && <div className=" h-full flex flex-row pt-10 pl-12 gap-[4rem] min-h-[200px]">
+        {!other && isVisible && <div ref={scrollContainer} className=" h-full w-full lg:justify-center px-16 md:px-12 flex flex-row mt-10  gap-12  min-h-[200px] overflow-x-auto overflow-y-clip  scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 ">
           {plans && plans.result ? (
             plans.result.map((row:any, index:any) => (
               <PP
@@ -126,15 +168,20 @@ const Dashboard: NextPage = () => {
               />
             ))
           ) : (
-            <p>Data is not available</p>
+            <p className="text-xl text-gray-400"> Plans are currently Unavailable</p>
           )}
         </div> }
-        {!isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
+        {!other && !isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
           <TripCard user_email={data.user_email} name={data.name}/>
         </div> }
-        <div className=" relative z-20 bg-stone-900">
+
+        {other &&  <div className="h-full flex items-center justify-center text-2xl">
+            <span>Coming soon...</span>
+        </div> }
+
+        {/* <div className=" relative z-20 bg-stone-900">
             <BOT/>
-        </div>
+        </div> */}
       </div>
     </div>
   );
