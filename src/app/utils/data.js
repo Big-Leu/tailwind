@@ -17,7 +17,7 @@ export const plans = {
         "check"
       ],
       "color": [
-        "text-stone-950",
+        "text-gray-400",
         "text-emerald-400"
       ],
       "label": [
@@ -33,7 +33,7 @@ export const plans = {
         "check"
       ],
       "color": [
-        "text-stone-950",
+        "text-gray-400",
         "text-emerald-400"
       ],
       "label": [
@@ -50,9 +50,9 @@ export const plans = {
         "cross"
       ],
       "color": [
-        "text-stone-950",
+        "text-gray-400",
         "text-emerald-400",
-        "text-stone-950"
+        "text-gray-400"
       ],
       "label": [
         "Lorem ipsum dolor sit amet.",

@@ -24,29 +24,28 @@ const PP: NextPage<WelcomeProps> = ({ hr, price, labels, icons, colors }) => {
   };
 
   return (
-    <div className="static max-w-[500px] h-auto bg-inherit flex justify-center pt-32">
-      {/* <div className="left-[2.2rem] top-[13.4rem] min-w-[100px] min-h-[40px] rounded-lg rotate-[-45deg] bg-emerald-500 z-1"></div> */}
-      <div className="relative min-w-[400px] max-h-[681px] z-1 hover:shadow-md rounded-2xl bg-stone-900 overflow-visible">
-        <div className="absolute top-[1rem] left-[-4rem] z-2 rounded-tl-lg rounded-bl-lg rounded-br-lg rounded-tr-lg rotate-[315deg] transform-gpu text-center min-w-[230px] bg-emerald-400 py-3">
-          <label className="relative text-white z-40 rotate-[315deg] font-dangrek px-6 text-3xl">
+    <div className="relative max-w-[500px] max-h-[495px]  flex justify-center mt-20 shadow-2xl shadow-gray-500 bg-transparent rounded-2xl hover:shadow-gray-400 flex-shrink">
+      <div className="relative min-w-[300px] max-h-[481px] z-1 hover:shadow-md rounded-2xl bg-stone-900 overflow-visible">
+        <div className="absolute top-[1rem] left-[-4rem] z-2 rounded-lg rotate-[315deg] transform-gpu text-center min-w-[230px] bg-emerald-600 py-3">
+          <label className="relative text-white z-40 rotate-[315deg] font-dangrek px-6 text-2xl">
             {hr} HOURS
           </label>
         </div>
         <div className="relative w-full flex justify-center pt-10">
-          <div className="relative items-center z-1 w-[132px] h-[132px] bg-emerald-400 rounded-full flex flex-row justify-center space-x-1">
+          <div className="relative items-center z-1 w-[102px] h-[102px] bg-emerald-400 rounded-full flex flex-row justify-center space-x-1">
             <div>
-              <Image className="z-2" src={ru} alt="" />
+              <Image className="z-2 p-1" src={ru} alt="" />
             </div>
             {price && (
               <div className="z-2">
-                <label className="z-2 font-dangrek text-5xl text-stone-900">
+                <label className="z-2 font-dangrek text-4xl text-stone-900">
                   {price}
                 </label>
               </div>
             )}
           </div>
         </div>
-        <div className="w-full h-full relative flex flex-col space-y-5 px-[3rem] pt-20">
+        <div className="w-full h-full relative flex flex-col gap-2 my-10 px-[3rem] ">
           {labels && labels.map((label, idx) => (
             <div className="relative w-full flex flex-row space-x-7" key={idx}>
               <Image
@@ -55,22 +54,22 @@ const PP: NextPage<WelcomeProps> = ({ hr, price, labels, icons, colors }) => {
                 alt=""
                 layout="fill"
               />
-              <label className={`font-dangrek text-xl/2 mt-1 ${colors[idx]}`}>
+              <label className={`font-dangrek text-xl/2 ${colors[idx]} text-left`}>
                 {label}
               </label>
             </div>
-          ))}
-          <div className="relative pt-10">
+          ))} 
+        </div>
+        <div className="absolute bottom-10 left-[30%] pt-10">
             <Link href="/from">
               <button
-                className="py-2 px-3 rounded-lg text-xl font-dangrek bg-emerald-400"
+                className="py-2 px-3 rounded-lg text-xl font-dangrek bg-emerald-300 text-black hover:text-gray-700 hover:bg-emerald-600 active:text-gray-300"
                 onClick={handleCheckboxChange}
               >
                 BOOK NOW
               </button>
             </Link>
           </div>
-        </div>
       </div>
     </div>
   );
