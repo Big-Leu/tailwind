@@ -100,7 +100,7 @@ const Dashboard: NextPage = () => {
 
 
   return (
-    <div className="min-w-screen  h-screen bg-stone-950 flex flex-row justify-start  select-none">
+    <div className="min-w-screen  min-h-screen bg-stone-950 flex flex-row justify-start  select-none">
       <Image className={`object-cover absolute z-20 m-10  cursor-pointer transition-all ${src==closeimg && "translate-x-56 p-2 hover:rotate-90 "} `} onClick={handlemenu} src={src} alt="menu"/>
       
       

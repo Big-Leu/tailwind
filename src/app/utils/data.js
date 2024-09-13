@@ -5,6 +5,36 @@ import { MdBathtub } from "react-icons/md";
 import {FaClinicMedical} from "react-icons/fa"
 import {GiFamilyHouse} from "react-icons/gi"
 
+
+export const slots = {
+  "slot" : [
+    { "id": "1AM", "label": "1 AM - 2 AM" },
+    { "id": "2AM", "label": "2 AM - 3 AM" },
+    { "id": "3AM", "label": "3 AM - 4 AM" },
+    { "id": "4AM", "label": "4 AM - 5 AM" },
+    { "id": "5AM", "label": "5 AM - 6 AM" },
+    { "id": "6AM", "label": "6 AM - 7 AM" },
+    { "id": "7AM", "label": "7 AM - 8 AM" },
+    { "id": "8AM", "label": "8 AM - 9 AM" },
+    { "id": "9AM", "label": "9 AM - 10 AM" },
+    { "id": "10AM", "label": "10 AM - 11 AM" },
+    { "id": "11AM", "label": "11 AM - 12 PM" },
+    { "id": "12PM", "label": "12 PM - 1 PM" },
+    { "id": "13PM", "label": "1 PM - 2 PM" },
+    { "id": "14PM", "label": "2 PM - 3 PM" },
+    { "id": "15PM", "label": "3 PM - 4 PM" },
+    { "id": "16PM", "label": "4 PM - 5 PM" },
+    { "id": "17PM", "label": "5 PM - 6 PM" },
+    { "id": "18PM", "label": "6 PM - 7 PM" },
+    { "id": "19PM", "label": "7 PM - 8 PM" },
+    { "id": "20PM", "label": "8 PM - 9 PM" },
+    { "id": "21PM", "label": "9 PM - 10 PM" },
+    { "id": "22PM", "label": "10 PM - 11 PM" },
+    { "id": "23PM", "label": "11 PM - 12 AM" },
+    { "id": "24AM", "label": "12 AM - 1 AM" }
+  ]
+}
+
 export const plans = {
   "message": "formservice fetched successfully",
   "status": "FETCHED",

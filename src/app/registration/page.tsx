@@ -197,7 +197,7 @@ const Registration: NextPage = () => {
             <button
               type="submit"
               className=" min-w-[30%] h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded"
-            // onClick={handleSubmit(handleRegister)}
+            onClick={handleSubmit(handleRegister)}
             >
               Register
             </button>

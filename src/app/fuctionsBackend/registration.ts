@@ -30,7 +30,7 @@ export const handleRegister = async (data: LoginFormInputs) => {
         is_verified: false,
       }),
     });
-
+    console.log(response);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -41,7 +41,7 @@ export const handleRegister = async (data: LoginFormInputs) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        firstName: data.firstName,
+        userName: data.firstName,
         lastName: data.lastName,
         mobile: data.phone,
         userEmail: data.email,

@@ -18,7 +18,7 @@ const TripCard: NextPage<WelcomeProps> = (props) => {
 
   return (
 
-        <div className="relative max-w-[400px]  h-auto bg-stone-900 rounded-[30px] flex flex-col ">
+        <div className="relative  min-h-auto bg-stone-900 rounded-[30px] flex flex-col ">
           <div className="bg-emerald-400 rounded-t-[30px] py-5 text-3xl font-dangrek text-center">
                   TOKEN
           </div>

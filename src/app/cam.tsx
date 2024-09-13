@@ -60,27 +60,43 @@ const Cam: NextPage<WelcomeProps> = (props) => {
         },
       ],
     };
+    const fetchData = async () => {
+     try{
+        const response =  await fetch(`{URL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+           credentials: 'include', 
+        },
+        body: JSON.stringify(data),
+       });
+      console.log("Data sent to server",response)
 
-    axios
-      .post(`http://localhost:5000/${props.endpointType}`, data)
-      .then((response) => {
-        console.log("Prediction result:", response.data);
-        if(response.data==="YES" && props.endpointType==="recognize"){
-          console.log("entered NO")
-          window.location.href = '/happy';
-        }
-        else if(response.data==="NO" && props.endpointType==="recognize"){
-          console.log("entered NO")
-          alert("NO Matched")
-        }
-        else{
-          console.log("sdkfhkdhk")
-        }
-      })
-      .catch((error) => {
-        console.error("Error making prediction:", error);
-      });
-  };
+     }
+     catch(error){
+       console.log("Error in try block",error)
+     }
+    }  };
+  //   axios
+  //     .post(`http://localhost:5000/${props.endpointType}`, data)
+  //     .then((response) => {
+  //       console.log("Prediction result:", response.data);
+  //       if(response.data==="YES" && props.endpointType==="recognize"){
+  //         console.log("entered NO")
+  //         window.location.href = '/happy';
+  //       }
+  //       else if(response.data==="NO" && props.endpointType==="recognize"){
+  //         console.log("entered NO")
+  //         alert("NO Matched")
+  //       }
+  //       else{
+  //         console.log("sdkfhkdhk")
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error making prediction:", error);
+  //     });
+
   return (
     <>
       <header>

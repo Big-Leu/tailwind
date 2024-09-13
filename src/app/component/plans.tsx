@@ -24,8 +24,8 @@ const PP: NextPage<WelcomeProps> = ({ hr, price, labels, icons, colors }) => {
   };
 
   return (
-    <div className="relative max-w-[500px] max-h-[495px]  flex justify-center mt-20 shadow-2xl shadow-gray-500 bg-transparent rounded-2xl hover:shadow-gray-400 flex-shrink">
-      <div className="relative min-w-[300px] max-h-[481px] z-1 hover:shadow-md rounded-2xl bg-stone-900 overflow-visible">
+    <div className="relative max-w-[500px] max-h-[495px]  flex justify-center mt-20 shadow-2xl bg-transparent rounded-2xl flex-shrink">
+      <div className="relative min-w-[300px] max-h-[481px] z-1  rounded-2xl bg-stone-900 overflow-visible">
         <div className="absolute top-[1rem] left-[-4rem] z-2 rounded-lg rotate-[315deg] transform-gpu text-center min-w-[230px] bg-emerald-600 py-3">
           <label className="relative text-white z-40 rotate-[315deg] font-dangrek px-6 text-2xl">
             {hr} HOURS
