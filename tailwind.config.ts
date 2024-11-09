@@ -8,7 +8,7 @@ const config: Config = {
     "./node_modules/flowbite-react/lib/**/*.js",
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
-  ],
+  ],a
   theme: {
     extend: {
       backgroundImage: {

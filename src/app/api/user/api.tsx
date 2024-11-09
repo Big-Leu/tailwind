@@ -1,8 +1,8 @@
-const URL = 'http://localhost:8000/api/v1';
+const URL = 'http://localhost:8000';
 
 const fetchUserData = async () => {
     try {
-        const response = await fetch(`${URL}/userdata`, {
+        const response = await fetch(`${URL}/api/v1/userdata`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
