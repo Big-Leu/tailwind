@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react';
 import DotLoader from "react-spinners/DotLoader";
 
+const URL = 'http://localhost:8000';
 const RedirectHandler = () => {
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#34D399");
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/whoami', {
+        const response = await fetch(`${URL}/api/v1/whoami`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -1,10 +1,12 @@
 import React from 'react';
 
+const URL = 'http://localhost:8000'
+
 export const handleLoginGoogle = async (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
   e.preventDefault(); // Prevent default action
 
   try {
-    const response = await fetch('http://localhost:8000/api/v1/auth/google/authorize', {
+    const response = await fetch(`${URL}/api/v1/auth/google/authorize`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -27,8 +27,7 @@ const Dashboard: NextPage = () => {
     name: string;
     profile: string;
   }
-  // const { data:plans } = useFetchPlans();
-  // console.log(plans);
+
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [other,setOther] = useState<boolean>(false);
@@ -80,7 +79,7 @@ const Dashboard: NextPage = () => {
  useEffect(() => {
   const handleScroll = (e: WheelEvent) => {
     if (scrollContainer.current) {
-        const scrollSpeed = 0.5; // Increase or decrease this value for faster/slower scrolling
+        const scrollSpeed = 0.5;
         scrollContainer.current.scrollLeft += e.deltaY * scrollSpeed;
     }
   };

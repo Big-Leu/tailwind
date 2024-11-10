@@ -1,5 +1,6 @@
 import { z } from "zod";
 import profile from "../assets/profile.svg";
+const URL = 'http://localhost:8000'
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
@@ -13,7 +14,7 @@ export const handleLogin = async (data: LoginFormInputs) => {
     const formData = new FormData();
     formData.set('username', data.email);
     formData.set('password', data.password);
-    const response = await fetch('http://localhost:8000/api/v1/auth/jwt/login', {
+    const response = await fetch(`${URL}/api/v1/auth/jwt/login`, {
       method: 'POST',
       body: formData,
       credentials: 'include', 
@@ -23,7 +24,7 @@ export const handleLogin = async (data: LoginFormInputs) => {
       throw new Error('Network response was not ok');
     }
 
-    const baseResponse = await fetch('http://localhost:8000/api/v1/userdata', {
+    const baseResponse = await fetch(`${URL}/api/v1/userdata`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

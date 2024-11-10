@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+
+const URL = 'http://localhost:8000';
 const loginSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters long"),
   lastName: z.string().min(2, "Last name must be at least 2 characters long"),
@@ -17,7 +19,7 @@ type LoginFormInputs = z.infer<typeof loginSchema>;
 export const handleRegister = async (data: LoginFormInputs) => {
   try {
     console.log(data);
-    const response = await fetch('http://localhost:8000/api/v1/auth/register', {
+    const response = await fetch(`${URL}/api/v1/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ export const handleRegister = async (data: LoginFormInputs) => {
       throw new Error('Network response was not ok');
     }
 
-    const baseResponse = await fetch('http://localhost:8000/api/v1/Base/register', {
+    const baseResponse = await fetch(`${URL}/api/v1/Base/register`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

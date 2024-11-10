@@ -17,6 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import bbb from "../assets/calendar_today_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { useRouter } from 'next/navigation';
 
+
+const URL = 'http://localhost:8000';
 const loginSchema = z.object({
   userName: z.string().min(2, "User name must be at least 2 characters long"),
   aadhar: z.string()
@@ -60,7 +62,7 @@ const FORM: NextPage = () => {
           };
         
          console.log("Payload:", raw);
-        const response = await fetch(`http://localhost:8000/api/v1/form/fillslots/${selectedDate}`,{
+        const response = await fetch(`${URL}/api/v1/form/fillslots/${selectedDate}`,{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ const FORM: NextPage = () => {
    const handleformSubmit = async (data: LoginFormInputs) => {
     try {
       console.log(data);
-      const response = await fetch('http://localhost:8000/api/v1/form/fill', {
+      const response = await fetch(`${URL}/api/v1/form/fill`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +125,7 @@ const FORM: NextPage = () => {
   useEffect(() => {
     const getslots = async ( selectedDate: string) =>{
       try {
-        const response = await fetch(`http://localhost:8000/api/v1/form/slots/${selectedDate}`, {
+        const response = await fetch(`${URL}/api/v1/form/slots/${selectedDate}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

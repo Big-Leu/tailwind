@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+
+const URL = 'http://localhost:8000';
 interface Plan {
     hours: string;
     price: string;
@@ -30,7 +32,7 @@ export const useFetchPlans = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/Base/listplans?page=1&size=50', {
+        const response = await fetch(`${URL}/api/v1/Base/listplans?page=1&size=50`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -43,16 +45,16 @@ export const useFetchPlans = () => {
         }
 
         const data: FetchPlansResponse = await response.json();
-        setData(data); // Store the response in state
-        setLoading(false); // Set loading to false after data is fetched
+        setData(data);
+        setLoading(false);
       } catch (error) {
         setError(error instanceof Error ? error : new Error('Unknown error occurred'));
-        setLoading(false); // Set loading to false if there's an error
+        setLoading(false); 
       }
     };
 
-    fetchPlans(); // Call the function to fetch data
-  }, []); // Empty dependency array means this effect runs once after initial render
+    fetchPlans(); 
+  }, []);
 
   return { data };
 };
