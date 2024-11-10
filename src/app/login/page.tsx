@@ -59,7 +59,7 @@ const Loginpage: NextPage = () => {
               <input
                 type="email"
                 {...register("email")}
-                className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-0 disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
+                className="peer w-full h-full bg-transparent 0 font-dangrek focus:outline-none disabled:bg-emerald-400 disabled:border-1 transition-all placeholder-shown:border placeholder-shown:border-emerald-400 placeholder-shown:border-t-emerald-400 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-emerald-400 focus:border-emerald-400"
                 placeholder=" "
                 required
               />

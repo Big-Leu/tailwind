@@ -28,6 +28,46 @@ const Dashboard: NextPage = () => {
     profile: string;
   }
 
+  const data1 = [
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+    {
+      user_email: "bigleu88@gmail.com",
+      name: "Big Leu",
+    },
+  ];
+
+
   const [data, setData] = useState<Data>({ user_email: '', name: '', profile: '' });
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [other,setOther] = useState<boolean>(false);
@@ -170,8 +210,10 @@ const Dashboard: NextPage = () => {
             <p className="text-xl text-gray-400"> Plans are currently Unavailable</p>
           )}
         </div> }
-        {!other && !isVisible && <div className="flex flex-row mt-[7rem] ml-[2rem]">
-          <TripCard user_email={data.user_email} name={data.name}/>
+        {!other && !isVisible && <div className="grid grid-cols-4 gap-12 mt-[3rem] overflow-y-auto max-h-[80vh] scrollbar-none">
+          {data1.map((data, index) => (
+            <TripCard user_email={data.user_email} name={data.name} key={index}/>
+          ))}
         </div> }
 
         {other &&  <div className="h-full flex items-center justify-center text-2xl">
