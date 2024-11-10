@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Landing: NextPage = () => {
   return (
-<div  className="flex flex-col lg:flex-row">
+<div  className="flex flex-col lg:flex-row w-screen h-screen">
     <div className="bg-stone-950 flex flex-col lg:flex-row lg:min-h-screen  min-w-full p-6 overflow-x-hidden overflow-y-clip lg:overflow-x-visible lg:min-w-[50%]" >
       <div className="w-full drop-shadow-lg z-30 bg-stone-950 flex flex-col justify-between">
         <div>
