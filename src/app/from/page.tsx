@@ -17,6 +17,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import bbb from "../assets/calendar_today_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { useRouter } from 'next/navigation';
 
+const vehicleData = [
+  {
+    vehicleNumber: "KA-01-HH-1234",
+    vehicleName: "TVS Ntorq 125",
+  },
+  {
+    vehicleNumber: "MH-12-AB-5678",
+    vehicleName: "Honda Activa",
+  },
+  // Add more vehicles as needed
+];
+
+
 
 const URL = 'http://localhost:8000';
 const loginSchema = z.object({
@@ -28,6 +41,11 @@ const loginSchema = z.object({
     .length(15, "License number must be exactly 15 characters") 
     .regex(/^[A-Z0-9]+$/, "License number must be alphanumeric"), 
   email: z.string().email("Invalid email address"),
+  vehicleNumber: z.string()
+  .regex(
+    /^[A-Z]{2}-[0-9]{2}-[A-Z]{2}-[0-9]{4}$/, 
+    "Vehicle number must be in format: XX-99-XX-9999 (e.g., KA-01-HH-1234)"
+  ),
 });
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
@@ -40,6 +58,12 @@ const FORM: NextPage = () => {
     mode: "all"
   });
 
+const [selectedVehicleNumber, setSelectedVehicleNumber] = useState<string>(vehicleData[0].vehicleNumber);
+
+const handleVehicleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  setSelectedVehicleNumber(event.target.value);
+  console.log("Selected vehicle number:", event.target.value);
+};
   const [checkedStates, setCheckedStates] = useState([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [useme, setUseme] = useState<boolean>(false);
@@ -62,7 +86,7 @@ const FORM: NextPage = () => {
           };
         
          console.log("Payload:", raw);
-        const response = await fetch(`${URL}/api/v1/form/fillslots/${selectedDate}`,{
+        const response = await fetch(`${URL}/api/v1/form/fillslots/${selectedVehicleNumber}/${selectedDate}`,{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -81,6 +105,7 @@ const FORM: NextPage = () => {
   }
 
    const handleformSubmit = async (data: LoginFormInputs) => {
+    console.log("Clisds")
     try {
       console.log(data);
       const response = await fetch(`${URL}/api/v1/form/fill`, {
@@ -125,7 +150,7 @@ const FORM: NextPage = () => {
   useEffect(() => {
     const getslots = async ( selectedDate: string) =>{
       try {
-        const response = await fetch(`${URL}/api/v1/form/slots/${selectedDate}`, {
+        const response = await fetch(`${URL}/api/v1/form/slots/${selectedVehicleNumber}/${selectedDate}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -149,7 +174,7 @@ const FORM: NextPage = () => {
     }
    
     getslots(selectedDate);
-  }, [selectedDate]);
+  }, [selectedDate,selectedVehicleNumber]);
  
   
    const unavail = (str:string) =>{
@@ -301,6 +326,29 @@ const FORM: NextPage = () => {
               />
             </div>
           </div>
+          <div id="vechile">
+            <label
+              className="block mb-2 text-2sm font-dangrek text-gray-900 dark:text-white"
+            >
+              Vehcile Number
+            </label>
+            {errors.vehicleNumber && <p className="text-red-500 font-dangrek text-xs mb-1">{errors.vehicleNumber.message}</p>}
+            <div className="flex">
+            <select
+              id="vehicleNumber"
+              value={selectedVehicleNumber}
+              {...register("vehicleNumber")}
+              onChange={handleVehicleChange}
+              className="flex flex-row w-full focus:outline-none font-dangrek bg-inherit border-slate-500 border text-gray-400 py-2 rounded-md px-3"
+            >
+              {vehicleData.map((item, index) => (
+                <option key={index} value={item.vehicleNumber} className=" bg-stone-900">
+                  {item.vehicleName} ({item.vehicleNumber})
+                </option>
+              ))}
+            </select>
+            </div>
+          </div>
           <div id="time selection">
             {useme ? (
                 <>
@@ -317,13 +365,13 @@ const FORM: NextPage = () => {
                 <>
                 </>
               )}
-            <div>
+            {/* <div>
               <Cam bucket="addtobucket21" name={data.name} mail_id={data.user_email} endpointType="predict"/>
-            </div>
+            </div> */}
             <div>
               <button 
                type="submit"
-               className="mt-[3rem] relative  w-full h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded" onClick={handleSubmit}>
+               className="mt-[3rem] relative  w-full h-[60px] bg-emerald-400 hover:bg-emerald-600 text-white font-normal text-[30px] font-dangrek py-2 px-4 rounded" onClick={()=>{handleformSubmit}}>
                       Submit
                 
               </button>

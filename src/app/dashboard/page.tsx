@@ -172,11 +172,9 @@ const Dashboard: NextPage = () => {
         <div className=" font-dangrek text-2xl text-center">
           <h1>AVAILABLE VEHICLES</h1>
         </div>
-        <div className=" px-5 space-y-3 scrollbar-thin scrollbar-track-rounded-full scrollbar-thumb-emerald-400 scrollbar-track-stone-900 overflow-y-scroll  overflow-x-hidden min-h-[200px]">
-          <CARD name="ARTHER 450" Price="60" milage="45 K/H" vehicle="miniev"/>
-          <CARD name="ARTHER 450X" Price="100" milage="55 K/H" vehicle="w1"/>
-          <CARD name="kawasaki EV" Price="200" milage="80 K/H" vehicle="w2"/>
-          <CARD name="revolt rv400 450X" Price="300" milage="100 K/H" vehicle="w3"/>
+        <div className=" px-5 space-y-3 overflow-y-scroll  overflow-x-hidden min-h-[20%] scrollbar-none">
+          <CARD name="TVS NTORQ 125" Price="60" milage="35 K/H" vehicle="miniev"/>
+          <CARD name="TVS NTORQ 125" Price="60" milage="35 K/H" vehicle="miniev"/>
         </div>
       </div>
       <div className={`relative flex flex-col  bg-stone-950 text-center w-[100%] px-[4rem] p-10 ${src==closeimg && "lg:translate-x-[260px] lg:w-[80%]"}`}>
